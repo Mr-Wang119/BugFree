@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="soccerGod:war">
+    <output-path>$PROJECT_DIR$/soccerGod/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>false</exploded>
+        <module>soccerGod</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="archive" name="soccerGod-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="soccerGod:war exploded" />
+    </root>
+  </artifact>
+</component>
