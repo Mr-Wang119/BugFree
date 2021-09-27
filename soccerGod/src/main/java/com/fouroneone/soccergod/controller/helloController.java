@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class helloController {
     @RequestMapping(value = "/help")
     public String test(){
-        return "index";
+        return "index1";
     }
 
 }
