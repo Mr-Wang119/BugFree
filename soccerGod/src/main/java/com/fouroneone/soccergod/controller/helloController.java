@@ -5,11 +5,15 @@ import com.fouroneone.soccergod.bean.TeamBelong;
 import com.fouroneone.soccergod.service.CompetitionService;
 import com.fouroneone.soccergod.service.FavoriteService;
 import com.fouroneone.soccergod.service.TeamBelongService;
+import com.fouroneone.soccergod.bean.UserInfo;
 import com.fouroneone.soccergod.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 //@RestController
 @Controller
@@ -28,7 +32,7 @@ public class helloController {
     CompetitionService competitionService;
 
     @RequestMapping(value = "/help")
-    public String test(){
+    public String help(){
         return userService.getUserInfoWithUin(10221083).getUsername();
 //        return userService.test();
 //        return favoriteService.getUserFavoriteWithUin(10221083).getUin();
@@ -54,5 +58,13 @@ public class helloController {
                 + " host score is: " + temp.getHostScore() + ", guest score is: "
                 + temp.getGuestScore();
     }
+
+    @RequestMapping(value = "/test")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public List<UserInfo> test() {
+        return userService.getUserList();
+    }
+
+
 
 }
