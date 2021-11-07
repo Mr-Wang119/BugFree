@@ -9,9 +9,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class MvcConfigure implements WebMvcConfigurer {
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginAuthInterceptor()).excludePathPatterns("/index.html", "/", "/user/signin", "/signup");
-
-    }
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(new LoginAuthInterceptor()).excludePathPatterns("/index.html", "/", "/user/signin", "/signup");
+//
+//    }
 }

@@ -19,52 +19,52 @@ import java.util.List;
 @Controller
 @ResponseBody
 public class helloController {
-    @Autowired
-    UserService userService;
-
-    @Autowired
-    FavoriteService favoriteService;
-
-    @Autowired
-    TeamBelongService teamBelongService;
-
-    @Autowired
-    CompetitionService competitionService;
-
-    @RequestMapping(value = "/help")
-    public String help(){
-        return userService.getUserInfoWithUin(10221083).getUsername();
-//        return userService.test();
-//        return favoriteService.getUserFavoriteWithUin(10221083).getUin();
-    }
-
-    @RequestMapping(value = "/help_teamBelong")
-    public String test_teamBelong(){
-        TeamBelong temp = teamBelongService.findById(1008);
-        if(temp == null){
-            return "NullPointerException";
-        }
-        return String.valueOf(temp.getLid());
-    }
-
-    @RequestMapping(value = "/help_competition")
-    public String test_Competition(){
-        Competition temp = competitionService.getCompetitionWithMid(10);
-        if(temp == null){
-            return "NullPointerException";
-        }
-        return "mid is: " + temp.getMid() + " host id is: " +
-                temp.getHostTeamId() + ", guest id is: " + temp.getGuestTeamId()
-                + " host score is: " + temp.getHostScore() + ", guest score is: "
-                + temp.getGuestScore();
-    }
-
-    @RequestMapping(value = "/test")
-    @CrossOrigin(origins = "http://localhost:3000")
-    public List<UserInfo> test() {
-        return userService.getUserList();
-    }
-
+//    @Autowired
+//    UserService userService;
+//
+//    @Autowired
+//    FavoriteService favoriteService;
+//
+//    @Autowired
+//    TeamBelongService teamBelongService;
+//
+//    @Autowired
+//    CompetitionService competitionService;
+//
+//    @RequestMapping(value = "/help")
+//    public String help(){
+//        return userService.getUserInfoWithUin(10221083).getUsername();
+////        return userService.test();
+////        return favoriteService.getUserFavoriteWithUin(10221083).getUin();
+//    }
+//
+//    @RequestMapping(value = "/help_teamBelong")
+//    public String test_teamBelong(){
+//        TeamBelong temp = teamBelongService.findById(1008);
+//        if(temp == null){
+//            return "NullPointerException";
+//        }
+//        return String.valueOf(temp.getLid());
+//    }
+//
+//    @RequestMapping(value = "/help_competition")
+//    public String test_Competition(){
+//        Competition temp = competitionService.getCompetitionWithMid(10);
+//        if(temp == null){
+//            return "NullPointerException";
+//        }
+//        return "mid is: " + temp.getMid() + " host id is: " +
+//                temp.getHostTeamId() + ", guest id is: " + temp.getGuestTeamId()
+//                + " host score is: " + temp.getHostScore() + ", guest score is: "
+//                + temp.getGuestScore();
+//    }
+//
+//    @RequestMapping(value = "/test")
+//    @CrossOrigin(origins = "http://localhost:3000")
+//    public List<UserInfo> test() {
+//        return userService.getUserList();
+//    }
+//
 
 
 }
