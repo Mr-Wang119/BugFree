@@ -105,7 +105,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(UserInfo user) {
-        userDao.updateUser(user);
+        UserInfo localUser = userDao.findById(user.getUin());
+        if (user.getPassword()!=null && !user.getPassword().equals("")) localUser.setPassword(user.getPassword());
+        if (user.getBirthday()!=null && !user.getBirthday().equals("")) localUser.setBirthday(user.getBirthday());
+        if (user.getName()!=null && !user.getName().equals("")) localUser.setName(user.getName());
+        userDao.updateUser(localUser);
     }
 
     @Override

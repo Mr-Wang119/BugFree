@@ -21,11 +21,11 @@ public interface UserDao {
     UserInfo findByEmail(String email);
 
     @Insert("insert into UserInfo(email, password, username, name, birthday)" +
-            "values (#{info.email}, #{info.password}, #{info.username}, #{info.name}, #{info.birthday})")
+            "values (#{email}, #{password}, #{username}, #{name}, #{birthday})")
     void insertUser(UserInfo info);
 
-    @Update("update UserInfo set uin=#{info.uin}, email=#{info.email}, password=#{info.password}, " +
-            "username=#{info.username}, name=#{info.name}, birthday=#{info.birthday},password=#{info.password} " +
+    @Update("update UserInfo set uin=#{uin}, email=#{email}, password=#{password}, " +
+            "username=#{username}, name=#{name}, birthday=#{birthday},password=#{password} " +
             "where uin=#{uin}")
     void updateUser(UserInfo info);
 

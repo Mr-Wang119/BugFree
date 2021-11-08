@@ -97,6 +97,12 @@ public class UserController {
         return "edit";
     }
 
+    @RequestMapping(method = RequestMethod.POST, value = "/update")
+    public String updateUser(UserInfo userInfo, Model model) {
+        userService.updateUser(userInfo);
+        return "homepage";
+    }
+
 
 //    @ResponseBody
 //    @RequestMapping(value = "/login")
