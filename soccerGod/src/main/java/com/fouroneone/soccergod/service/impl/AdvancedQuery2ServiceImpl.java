@@ -21,4 +21,8 @@ public class AdvancedQuery2ServiceImpl implements AdvancedQuery2Service {
     public List<AdvancedQuery2> getResult(int weight, String birthday) {
         return advancedQuery2Dao.getResult(weight, birthday);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 9d86b51 (整合advance query并加上前端，使用重定向修改delete)

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.fouroneone.soccergod.bean.UserInfo;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,7 +25,7 @@ public class UserController {
     private UserService userService;
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/")
+    @RequestMapping(method = RequestMethod.GET, value = "/homepage")
     public String homepage(Model model) {
         List<UserInfo> users = userService.getUserList();
         model.addAttribute("userList", users);
@@ -83,10 +84,14 @@ public class UserController {
         return "user";
     }
 
+
     @RequestMapping(method = RequestMethod.GET, value = "/delete")
-    public String deleteUser(@RequestParam("deleteID") Integer id) {
+    public RedirectView deleteUser(@RequestParam("deleteID") Integer id) {
         userService.deleteUserWithUin(id);
-        return "homepage";
+        RedirectView redirectView = new RedirectView();
+        redirectView.setContextRelative(true);
+        redirectView.setUrl("homepage");
+        return redirectView;
     }
 
 

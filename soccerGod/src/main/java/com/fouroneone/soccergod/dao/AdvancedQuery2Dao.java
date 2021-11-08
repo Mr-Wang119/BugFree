@@ -13,4 +13,8 @@ public interface AdvancedQuery2Dao {
             "MIN(height) as min_height FROM Player JOIN PlayerBelong USING(pid) JOIN Team USING(tid) " +
             "WHERE weight>#{weight} and birthday > #{birthday} GROUP BY Team.name, position;")
     List<AdvancedQuery2> getResult(@Param("weight")int weight, @Param("birthday") String birthday);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 9d86b51 (整合advance query并加上前端，使用重定向修改delete)
