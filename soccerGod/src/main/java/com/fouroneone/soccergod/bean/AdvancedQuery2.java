@@ -55,9 +55,4 @@ public class AdvancedQuery2 {
     public void setMin_height(int min_height) {
         this.min_height = min_height;
     }
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 9d86b51 (整合advance query并加上前端，使用重定向修改delete)
