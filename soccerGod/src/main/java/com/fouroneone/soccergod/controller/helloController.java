@@ -1,12 +1,10 @@
 package com.fouroneone.soccergod.controller;
 
+import com.fouroneone.soccergod.bean.AdvancedQuery2;
 import com.fouroneone.soccergod.bean.Competition;
 import com.fouroneone.soccergod.bean.TeamBelong;
-import com.fouroneone.soccergod.service.CompetitionService;
-import com.fouroneone.soccergod.service.FavoriteService;
-import com.fouroneone.soccergod.service.TeamBelongService;
+import com.fouroneone.soccergod.service.*;
 import com.fouroneone.soccergod.bean.UserInfo;
-import com.fouroneone.soccergod.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +17,15 @@ import java.util.List;
 @Controller
 @ResponseBody
 public class helloController {
+//    @Autowired
+//    AdvancedQuery2Service advancedQuery2Service;
+//
+//    @RequestMapping(value = "/help_query2")
+//    public List<AdvancedQuery2> test_query2(){
+//        List<AdvancedQuery2> temp = advancedQuery2Service.getResult(85, "1978-01-28");
+//        return temp;
+//    }
+
 //    @Autowired
 //    UserService userService;
 //

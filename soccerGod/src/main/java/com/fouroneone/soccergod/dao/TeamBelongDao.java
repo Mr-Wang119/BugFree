@@ -1,11 +1,7 @@
 package com.fouroneone.soccergod.dao;
 
 import com.fouroneone.soccergod.bean.TeamBelong;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -15,11 +11,11 @@ public interface TeamBelongDao {
     TeamBelong findById(int tid);
 
     @Insert("INSERT INTO TeamBelong (lid, tid) VALUES (#{lid}, #{tid})")
-    void insertTeamBelong(int lid, int tid);
+    void insertTeamBelong(@Param("lid") int lid, @Param("tid") int tid);
 
     @Delete("DELETE FROM TeamBelong WHERE tid = #{tid}")
     void deleteTeamBelong(int tid);
 
     @Update("UPDATE TeamBelong SET lid = #{lid}, tid = #{tid} WHERE tid = #{tid}")
-    void updateTeamBelong(int lid, int tid);
+    void updateTeamBelong(@Param("lid") int lid, @Param("tid") int tid);
 }
