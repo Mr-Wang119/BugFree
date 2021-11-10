@@ -103,9 +103,12 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/update")
-    public String updateUser(UserInfo userInfo, Model model) {
+    public RedirectView updateUser(UserInfo userInfo, Model model) {
         userService.updateUser(userInfo);
-        return "homepage";
+        RedirectView redirectView = new RedirectView();
+        redirectView.setContextRelative(true);
+        redirectView.setUrl("homepage");
+        return redirectView;
     }
 
 
