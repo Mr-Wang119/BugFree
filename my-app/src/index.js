@@ -1,33 +1,11 @@
-import React, { Component } from 'react';
-// import UserList from './UserList';
-import reactDom from 'react-dom';
-import TeamList from './TeamList';
-import SearchInput from './SearchInput';
+import React from 'react';
+import { BrowserRouter as Router} from 'react-router-dom';
+import App from './app';
+import reactDom from 'react-dom'
 
-class App extends Component {
-
-    constructor() {
-        super();
-        this.state = {
-            value: ''
-        };
-    }
-    printContent(keyword) {
-        this.setState({
-            value:keyword
-        });
-        reactDom.render(<TeamList keyword={keyword}/>, document.getElementById('subtable'));
-    }
-
-  render() {
-    return (
-        <div className="container">
-            <SearchInput onSubmit={this.printContent.bind(this)} />
-        </div>
-    );
-    }
-}
-
-export default App;
-
-reactDom.render(<App />, document.getElementById('root'));
+reactDom.render(
+    <Router>
+        <App />
+    </Router>, 
+    document.getElementById('root')
+);
