@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfd11977-70eb-42b3-aa09-28db5853b946" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/soccerGod/src/main/resources/templates/homepage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/soccerGod/src/main/resources/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/soccerGod/src/main/resources/templates/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/soccerGod/src/main/resources/templates/user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/soccerGod/${project.build.directory}/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/soccerGod/${project.build.directory}/classes/static/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/soccerGod/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/soccerGod/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/soccerGod/src/main/java/com/fouroneone/soccergod/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/soccerGod/src/main/java/com/fouroneone/soccergod/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/soccerGod/src/main/java/com/fouroneone/soccergod/controller/helloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/soccerGod/src/main/java/com/fouroneone/soccergod/controller/helloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/soccerGod/src/main/resources/static/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/soccerGod_war.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/soccerGod_war.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/soccerGod_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/soccerGod_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/soccerGod/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/soccerGod/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/soccerGod/src/main/resources/static/js/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/soccerGod/src/main/resources/static/js/validation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +55,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -93,6 +90,8 @@
       <workItem from="1636315167189" duration="3531000" />
       <workItem from="1636318878983" duration="32000" />
       <workItem from="1636321533069" duration="19000" />
+      <workItem from="1637541822032" duration="20000" />
+      <workItem from="1637541866685" duration="625000" />
     </task>
     <servers />
   </component>

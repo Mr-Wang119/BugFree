@@ -2,6 +2,7 @@ package com.fouroneone.soccergod.controller;
 
 import com.fouroneone.soccergod.bean.Result;
 import com.fouroneone.soccergod.bean.UserInfo;
+import com.fouroneone.soccergod.service.MatchService;
 import com.fouroneone.soccergod.service.UserService;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
 
 
     @RequestMapping(method = RequestMethod.GET, value = "/homepage")

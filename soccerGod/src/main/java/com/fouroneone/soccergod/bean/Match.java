@@ -1,12 +1,11 @@
 package com.fouroneone.soccergod.bean;
-
-public class Competition {
+import java.util.*;
+public class Match {
     private int mid;
     private String name;
-    private String time;
+    private Date time;
     private String location;
     private int pondAmount;
-    private int finish;
 
     public int getMid() {
         return mid;
@@ -24,11 +23,11 @@ public class Competition {
         this.name = name;
     }
 
-    public String getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 
@@ -48,11 +47,14 @@ public class Competition {
         this.pondAmount = pondAmount;
     }
 
-    public int getFinish() {
-        return finish;
-    }
-
-    public void setFinish(int finish) {
-        this.finish = finish;
+    @Override
+    public String toString() {
+        return "Match{" +
+                "mid=" + mid +
+                ", name='" + name + '\'' +
+                ", time=" + time +
+                ", location='" + location + '\'' +
+                ", pondAmount=" + pondAmount +
+                '}';
     }
 }
