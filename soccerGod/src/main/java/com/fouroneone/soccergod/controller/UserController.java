@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import com.fouroneone.soccergod.bean.UserInfo;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -26,17 +27,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
-    @RequestMapping(method = RequestMethod.GET, value = "/homepage")
-    public String homepage(Model model) {
-        List<UserInfo> users = userService.getUserList();
-        model.addAttribute("userList", users);
-        return "homepage";
-    }
-    
-
     @ResponseBody
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public Result homepage(HttpServletRequest request) {
        return new Result("homepage", true, null);
     }
@@ -58,13 +50,14 @@ public class UserController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/signup")
+    @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public Result signUp(UserInfo user) {
+        System.out.println(user.getEmail());
         return userService.register(user);
     }
 
     @ResponseBody
-    @RequestMapping(value = "/logout")
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public Result logout(HttpServletRequest request) {
         UserInfo user = new UserInfo();
         HttpSession session = request.getSession();
@@ -74,17 +67,33 @@ public class UserController {
         return result;
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/status")
-    public Result isSignin(HttpSession session) {
-        Result result;
-        if (session.getAttribute("username")==null) {
-            result = new Result("logout", true, null);
-        } else {
-            result = new Result("login", true, session.getAttribute("username"));
-        }
-        return result;
-    }
+//    @ResponseBody
+//    @RequestMapping(value = "/status")
+//    public Result isSignin(HttpSession session) {
+//        Result result;
+//        if (session.getAttribute("username")==null) {
+//            result = new Result("logout", true, null);
+//        } else {
+//            result = new Result("login", true, session.getAttribute("username"));
+//        }
+//        return result;
+//    }
 
+    @ResponseBody
+    @RequestMapping(value = "/user/{username}", method = RequestMethod.GET)
+    public Result getUserInfo(@PathVariable String username) {
+        Result res = new Result();
+        UserInfo user = userService.getUserInfoWithUsername(username);
+        if (user == null) {
+            res.setMsg("Don't find user");
+            res.setSuccess(false);
+            res.setDetail(null);
+        } else {
+            res.setMsg("");
+            res.setSuccess(true);
+            res.setDetail(user);
+        }
+        return res;
+    }
 
 }

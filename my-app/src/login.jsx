@@ -20,6 +20,12 @@ class Login extends React.Component {
         this.setState(obj);
     }
 
+    componentWillMount() {
+        if(localStorage.getItem('usernameToken')) {
+            this.props.history.push('/homepage');
+        }
+    }
+
     submitForm() {
         const _this = this;
         let datas = new FormData();
@@ -42,8 +48,10 @@ class Login extends React.Component {
         .then(function (response) {
             let data = response.data;
             if (data.success == true) {
-                // TODO: session
-                _this.props.history.go(-1);
+                // token
+                window.localStorage.setItem('usernameToken', data.detail.username);
+                // redirect
+                _this.props.history.push('/user/'+data.detail.username);
             } else {
                 _this.setState({error: "Wrong username or password, please re-try!"});
             }
@@ -55,19 +63,26 @@ class Login extends React.Component {
     render() {
         return (
             <div>
-                <div>
-                    <input type="text" id="username" onInput={(event)=>this.setUserInfo(event, 'username')}/>
-                    <label htmlFor="username">Username</label>
+                <div class="innner_banner" style={{marginBottom: "20px"}}>
+                    <div class="container">
+                        <h3>Log In</h3>
+                    </div>
                 </div>
-                <div>
-                    <input type="password" id="password" onInput={(event)=>this.setUserInfo(event, 'password')}/>
-                    <label htmlFor="password">Password</label>
-                </div>
-                <div>
-                    <button onClick={this.submitForm}>LOG IN</button>
-                </div>
-                <div>
-                    <p style={{color: "red"}}>{this.state.error}</p>
+                <div style={{margin: "20px auto", width: "20%"}}>
+                    <div className="form-floating mb-3">
+                        <label htmlFor="username">Username</label>
+                        <input type="text" id="username" onInput={(event)=>this.setUserInfo(event, 'username')} className="form-control" placeholder="Username"/>
+                    </div>
+                    <div className="form-floating mb-3">
+                        <label htmlFor="password">Password</label>
+                        <input type="password" id="password" onInput={(event)=>this.setUserInfo(event, 'password')} className="form-control" placeholder="Password"/>
+                    </div>
+                    <div className="form-floating mt-3">
+                        <button onClick={this.submitForm} className="btn btn-warning">LOG IN</button>
+                    </div>
+                    <div className="form-floating mb-3">
+                        <p style={{color: "indianred"}}>{this.state.error}</p>
+                    </div>
                 </div>
             </div>
         );
