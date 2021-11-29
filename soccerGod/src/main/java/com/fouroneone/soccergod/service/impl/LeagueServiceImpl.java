@@ -25,4 +25,9 @@ public class LeagueServiceImpl implements LeagueService {
     public List<League> findLeagueByName(String name) {
         return this.leagueDao.findLeagueByName(name);
     }
+
+    @Override
+    public List<League> getAllLeague() {
+        return this.leagueDao.getAllLeague();
+    }
 }

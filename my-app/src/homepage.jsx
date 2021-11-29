@@ -6,7 +6,14 @@ class Homepage extends React.Component {
     
     render() {
         return (
-            <h1>This is Homepage</h1>
+            <div>
+                <div class="innner_banner" style={{marginBottom: "20px"}}>
+                    <div class="container">
+                        <h3>Homepage</h3>
+                    </div>
+                </div>
+                <h1>This is Homepage</h1>
+            </div>
         );
     }
 }

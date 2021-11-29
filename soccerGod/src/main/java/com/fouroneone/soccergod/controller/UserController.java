@@ -19,7 +19,6 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
-// @RestController
 @Controller
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserController {

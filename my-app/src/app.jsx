@@ -4,9 +4,12 @@ import Homepage from './homepage';
 import Login from './login'
 import Signup from './signup';
 import User from './user'
-import Header from './header';
-import { Layout, notification } from 'antd';
-const { Content } = Layout;
+import Error from './error'
+import LeagueList from './leagueList'
+
+import { Layout, Menu, Breadcrumb } from 'antd';
+
+const { Header, Content, Footer } = Layout;
 
 class App extends React.Component {
 
@@ -16,17 +19,19 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <Content className="app-content">
+            <Layout className="layout" style={{ padding: '0' }}>
+                <Content style={{ padding: '0' }}>
                     <Switch>
+                        <Route exact path="/error" component={Error}></Route>
                         <Route exact path="/" component={Homepage}></Route> 
                         <Route exact path="/signup" component={Signup}></Route>
                         <Route exact path="/login" component={Login}></Route>
                         <Route exact path="/homepage" component={Homepage}></Route>
                         <Route path="/user/:username" component={User}></Route>
+                        <Route exact path="/league" component={LeagueList}></Route>
                     </Switch>
                 </Content>
-            </div>
+            </Layout>
         );
     }
 }

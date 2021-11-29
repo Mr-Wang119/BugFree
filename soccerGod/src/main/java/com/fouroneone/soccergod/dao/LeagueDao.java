@@ -13,4 +13,7 @@ public interface LeagueDao {
 
     @Select("SELECT * FROM League WHERE name LIKE CONCAT('%', #{name}, '%')")
     public List<League> findLeagueByName(String name);
+
+    @Select("SELECT * FROM League ORDER BY `name`")
+    public List<League> getAllLeague();
 }

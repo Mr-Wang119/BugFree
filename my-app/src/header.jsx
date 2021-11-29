@@ -26,13 +26,6 @@ class Header extends React.Component {
                     <header class="kode_header_2">
                         <div class="kf_top_bar">
                             <div class="container">
-                                <div class="pull-left">
-                                    <ul class="kf_social2">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-github"></i></a></li>
-                                    </ul>
-                                </div>
                                 <div class="kf_right_dec">
                                     <ul class="kf_user">
                                         <li><a href={"/user/"+username}>{username}</a></li>
@@ -56,7 +49,7 @@ class Header extends React.Component {
                                 <div class="kode_navigation">
                                     <ul class="nav">
                                         <li><a href="/homepage">home</a></li>
-                                        <li><a href="#">blog</a></li>
+                                        <li><a href="/league">league</a></li>
                                         <li><a href="#">shop</a></li>
                                         <li><a href="#">team overview</a></li>
                                         <li><a href="#">team schedule</a></li>
@@ -67,7 +60,7 @@ class Header extends React.Component {
                                         <button class="dl-trigger">Open Menu</button>
                                         <ul class="dl-menu">
                                             <li><a href="/homepage">home</a></li>
-                                            <li><a href="#">blog</a></li>
+                                            <li><a href="/league">league</a></li>
                                             <li><a href="#">shop</a></li>
                                             <li><a href="#">team overview</a></li>
                                             <li><a href="#">team schedule</a></li>
@@ -87,13 +80,6 @@ class Header extends React.Component {
                     <header class="kode_header_2">
                         <div class="kf_top_bar">
                             <div class="container">
-                                <div class="pull-left">
-                                    <ul class="kf_social2">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-github"></i></a></li>
-                                    </ul>
-                                </div>
                                 <div class="kf_right_dec">
                                     <ul class="kf_user">
                                         <li><a href="/signup"><i class="fa fa-lock"></i>Sign up</a></li>
@@ -113,7 +99,7 @@ class Header extends React.Component {
                                 <div class="kode_navigation">
                                     <ul class="nav">
                                         <li><a href="/homepage">home</a></li>
-                                        <li><a href="#">blog</a></li>
+                                        <li><a href="/league">league</a></li>
                                         <li><a href="#">shop</a></li>
                                         <li><a href="#">team overview</a></li>
                                         <li><a href="#">team schedule</a></li>
@@ -124,7 +110,7 @@ class Header extends React.Component {
                                         <button class="dl-trigger">Open Menu</button>
                                         <ul class="dl-menu">
                                             <li><a href="/homepage">home</a></li>
-                                            <li><a href="#">blog</a></li>
+                                            <li><a href="/league">league</a></li>
                                             <li><a href="#">shop</a></li>
                                             <li><a href="#">team overview</a></li>
                                             <li><a href="#">team schedule</a></li>

@@ -18,6 +18,10 @@ class User extends React.Component {
         const _this = this;
         if(localStorage.getItem('usernameToken')) {
             let username = localStorage.getItem('usernameToken')
+            let usernameInUrl = _this.props.match.params.username
+            if (username != usernameInUrl) {
+                _this.props.history.push('/error');
+            }
             let path = 'http://localhost:8080/user/'+username;
             axios.get(path)
             .then(function (response) {
@@ -25,12 +29,12 @@ class User extends React.Component {
                 if (data.success == true) {
                     _this.setState({success: true, info: data.detail});
                 } else {
-                    _this.props.history.push('/login');
+                    _this.props.history.push('/error');
                 }
             })
             .catch(function (error) {
                 console.log(error);
-                _this.props.history.push('/login');
+                _this.props.history.push('/error');
             });
         } else {
             this.props.history.go(-1);
