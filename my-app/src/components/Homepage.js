@@ -60,7 +60,7 @@ class Homepage extends Component {
                             <img src="extra-images/banner1.jpg" alt="" style={{opacity: "0.85"}}/>
                             <div className="container" style={{textShadow: "1px 1px rgb(100 100 100)"}}>
                                 <div className="banner_caption text-center">
-                                    <span>Welcome to SoccorGod !!</span>
+                                    <span>Welcome to SoccerGod !!</span>
                                     <h1>
                                         {this.state.matches[0].hostName} <b>vs</b> {this.state.matches[0].guestName}
                                     </h1>
