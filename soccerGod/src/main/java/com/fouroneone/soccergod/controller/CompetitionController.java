@@ -1,6 +1,7 @@
 package com.fouroneone.soccergod.controller;
 
 import com.fouroneone.soccergod.bean.CompetitionWithCompete;
+import com.fouroneone.soccergod.bean.Result;
 import com.fouroneone.soccergod.bean.UserInfo;
 import com.fouroneone.soccergod.service.CompetitionService;
 import com.fouroneone.soccergod.service.UserService;
@@ -32,30 +33,21 @@ public class CompetitionController {
         return competitions;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/competitionDetailInfoById")
+    @RequestMapping(method = RequestMethod.GET, value = "/match/{id}")
     @ResponseBody
-    public String competitionDetailInfoById(HttpServletRequest request) {
-        int mid = Integer.parseInt(request.getParameter("mid"));
-        System.out.println(mid);
-        CompetitionWithCompete competitionTemp = competitionService.findById(mid);
-        JSONObject jsonObject=new JSONObject();
-        jsonObject.put("mid",competitionTemp.getMid());
-        jsonObject.put("hostScore",competitionTemp.getHostScore());
-        jsonObject.put("hostName",competitionTemp.getHostName());
-        jsonObject.put("guestName",competitionTemp.getGuestName());
-        jsonObject.put("guestScore",competitionTemp.getGuestScore());
-        jsonObject.put("hostTeamId",competitionTemp.getHostTeamId());
-        jsonObject.put("guestTeamId",competitionTemp.getGuestTeamId());
-        jsonObject.put("hostUrl",competitionTemp.getHostUrl());
-        jsonObject.put("guestUrl",competitionTemp.getGuestUrl());
-        jsonObject.put("time",competitionTemp.getTime());
-        jsonObject.put("finish",competitionTemp.getFinish());
-        jsonObject.put("name",competitionTemp.getName());
-        jsonObject.put("location",competitionTemp.getLocation());
-        jsonObject.put("pondAmount",competitionTemp.getPondAmount());
-
-        return jsonObject.toString();
-
+    public Result competitionDetailInfoById(@PathVariable Integer id) {
+        CompetitionWithCompete competition = competitionService.findById(id);
+        Result result = new Result();
+        if (competition == null) {
+            result.setDetail(null);
+            result.setMsg("Wrong id");
+            result.setSuccess(false);
+        } else {
+            result.setSuccess(true);
+            result.setDetail(competition);
+            result.setMsg("");
+        }
+        return result;
     }
 
 }
