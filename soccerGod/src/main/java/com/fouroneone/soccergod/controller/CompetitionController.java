@@ -14,10 +14,23 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
-@Controller
+import java.util.List;
+
+
+@RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class CompetitionController {
     @Autowired
     private CompetitionService competitionService;
+
+    @RequestMapping(method = RequestMethod.GET, value = "/recentCompetition")
+    @ResponseBody
+    public List<CompetitionWithCompete> getRecentCompetition(HttpServletRequest request) {
+        int num = Integer.parseInt(request.getParameter("num"));
+        System.out.println(num);
+        List<CompetitionWithCompete> competitions = competitionService.findRecentCompetitions(num);
+        return competitions;
+    }
 
     @RequestMapping(method = RequestMethod.POST, value = "/competitionDetailInfoById")
     @ResponseBody

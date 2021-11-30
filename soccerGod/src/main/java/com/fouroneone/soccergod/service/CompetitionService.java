@@ -3,8 +3,11 @@ import com.fouroneone.soccergod.bean.Competition;
 import com.fouroneone.soccergod.bean.CompetitionWithCompete;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface CompetitionService {
     CompetitionWithCompete findById(int mid);
+    List<CompetitionWithCompete> findRecentCompetitions(int num);
     int findPondAmountById(int mid);
     int UpdatePondAmount(int mid, int pondAmount);
 

@@ -11,7 +11,12 @@ public interface CompetitionDao {
 
     @Select("SELECT hostTeam.image as hostUrl, guestTeam.image as guestUrl, hostTeam.name AS hostName, hostScore, guestTeam.name AS guestName, mid, guestScore, location, time, finish,Competition.name as name,pondAmount,hostTeamId,guestTeamId\n" +
             "    FROM Compete NATURAL JOIN Competition JOIN Team AS hostTeam ON hostTeam.tid=Compete.hostTeamId JOIN Team AS guestTeam ON Compete.guestTeamId=guestTeam.tid WHERE mid = #{mid}")
-    CompetitionWithCompete findById(int mid);
+    CompetitionWithCompete findById(@Param("mid") int mid);
+
+    @Select("SELECT hostTeam.image as hostUrl, guestTeam.image as guestUrl, hostTeam.name AS hostName, hostScore, guestTeam.name AS guestName, mid, guestScore, location, time, finish,Competition.name as name,pondAmount,hostTeamId,guestTeamId\n" +
+            "    FROM Compete NATURAL JOIN Competition JOIN Team AS hostTeam ON hostTeam.tid=Compete.hostTeamId JOIN Team AS guestTeam ON Compete.guestTeamId=guestTeam.tid where time > #{date}" +
+            "    order by time limit #{num}")
+    List<CompetitionWithCompete> findRecentCompetitions(@Param("num") int num, @Param("date") String date);
 
     @Select("SELECT pondAmount FROM Competition WHERE mid = #{mid}")
     int findPondAmountById(int mid);

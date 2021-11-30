@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch, withRouter} from 'react-router-dom';
-import Homepage from './homepage';
+import Homepage from './components/Homepage';
 import Login from './login'
 import Signup from './signup';
 import User from './user'
