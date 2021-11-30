@@ -17,7 +17,7 @@ public class GuessServiceImpl implements GuessService {
     }
 
     @Override
-    public int getHostGuestPond(int mid, int status) {
+    public Integer getHostGuestPond(int mid, int status) {
         return guessDao.getHostGuestPond(mid, status);
     }
 }

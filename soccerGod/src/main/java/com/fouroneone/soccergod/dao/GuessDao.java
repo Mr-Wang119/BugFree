@@ -3,6 +3,7 @@ package com.fouroneone.soccergod.dao;
 import com.fouroneone.soccergod.bean.Guess;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 @Mapper
@@ -12,5 +13,5 @@ public interface GuessDao {
     void insertGuess(Guess guess);
 
     @Select("select sum(amount) from Guess where mid=#{mid} and status=#{status}")
-    int getHostGuestPond(int mid, int status);
+    Integer getHostGuestPond(@Param("mid") int mid, @Param("status") int status);
 }

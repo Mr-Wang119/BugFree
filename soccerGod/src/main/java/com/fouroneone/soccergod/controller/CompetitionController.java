@@ -24,6 +24,7 @@ import java.util.List;
 public class CompetitionController {
     @Autowired
     private CompetitionService competitionService;
+    @Autowired
     private GuessService guessService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/recentCompetition")
@@ -47,8 +48,8 @@ public class CompetitionController {
             return result;
         }
         // 暂时用1表示主场, -1表示客场
-        int hostPond = guessService.getHostGuestPond(mid, 1);
-        int guestPond = guessService.getHostGuestPond(mid, -1);
+        Integer hostPond = guessService.getHostGuestPond(id, 1);
+        Integer guestPond = guessService.getHostGuestPond(id, -1);
         JSONObject jsonObject=new JSONObject();
         jsonObject.put("mid",competition.getMid());
         jsonObject.put("hostScore",competition.getHostScore());
@@ -66,7 +67,6 @@ public class CompetitionController {
         jsonObject.put("pondAmount",competition.getPondAmount());
         jsonObject.put("hostPond", hostPond);
         jsonObject.put("guestPond", guestPond);
-        Result result = new Result();
         result.setSuccess(true);
         result.setDetail(jsonObject);
         result.setMsg("");
