@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { Table, Spin} from 'antd';
+import './css/leagueDetail.css'
+import { Table, Spin, Typography } from 'antd';
 const { Column } = Table;
+const { Text, Title } = Typography;
 
 class LeagueDetail extends React.Component {
     constructor(props) {
@@ -40,11 +42,15 @@ class LeagueDetail extends React.Component {
         }
         return (
             <div>
-                <div class="kf_overview_contant">
-                    <h6 className="kf_hd1 margin_0">
-                        {this.state.league.name}
-                    </h6>
-                    <p>{this.state.league.desc}</p>
+                <div id="leagueText">
+                    <div id="leagueText-title">
+                        <span>
+                            <Title level={3}>{this.state.league.name}</Title>
+                        </span>
+                    </div>
+                    <div id="leagueText-desc">
+                        <Text>{this.state.league.desc}</Text>
+                    </div>
                 </div>
                 <div style={{width: "60%", margin: "0 auto"}}>
                     <Table dataSource={this.state.teams}>

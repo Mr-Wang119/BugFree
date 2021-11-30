@@ -42,7 +42,9 @@ class TeamDetail extends React.Component {
             <div>
                     <div class="innner_banner" style={{ marginBottom: "20px" }}>
                         <div class="container">
-                            <h3>Team {this.state.team.name}</h3>
+                            <h3>
+                                <img width={100} src={this.state.team.image} alt="team logo"/>    {this.state.team.name}
+                            </h3>
                         </div>
                     </div>
                 <div style={{margin: "0 auto", width: "60%"}}>
@@ -58,15 +60,18 @@ class TeamDetail extends React.Component {
                             dataIndex="shortName"
                             render={(text, record) => (
                                 <a href={"/player/"+record.pid}>{text}</a>
-                        )}
+                            )}
+                            sorter={(a, b) => a.shortName.localeCompare(b.shortName)}
                         />
                         <Column
                             title="Nation"
                             dataIndex="nationality"
+                            sorter={(a, b) => a.nationality.localeCompare(b.nationality)}
                         />
                         <Column
                             title="Position"
                             dataIndex="position"
+                            sorter={(a, b) => a.position.localeCompare(b.position)}
                         />
                     </Table>
                 </div>

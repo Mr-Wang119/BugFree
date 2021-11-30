@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { Spin} from 'antd';
+import { Spin, Progress } from 'antd';
+import './css/player.css'
 
 class Player extends React.Component {
     constructor(props) {
@@ -33,6 +34,7 @@ class Player extends React.Component {
     }
 
     render() {
+        console.log(this.state)
         if (this.state.isReady == false) {
             return (
                 <Spin delay="1000"/>
@@ -40,155 +42,182 @@ class Player extends React.Component {
         }
         return (
             <div>
-                <div class="widget roster_sidebar">
-                    <h6 class="kf_hd1 margin_0">
+                <div class="innner_banner" style={{ marginBottom: "20px" }}>
+                        <div class="container">
+                            <h3>
+                                Player
+                            </h3>
+                        </div>
+                    </div>
+                <div className="player-container">
+                    <h6 className="kf_hd1 margin_0">
                         <span>Player Information</span>
                     </h6>
-                    <div class="kf_roster_dec">
-                        <figure>
-                            <img src="extra-images/rooster5.png" alt="" />
+                    <div className="kf_roster_dec playerInfo">
+                        <figure className="playerImage">
+                            <img src={this.state.player.image} alt=""/>
                         </figure>
-                        <div class="text">
-                            <div class="text_overflow">
-                                <h3>{this.state.player.name}</h3>
-                                <em>1st shooting Gaurd</em>
+                        <div className="text playerText" style={{width: "60%"}}>
+                            <span>{this.state.player.position}</span>
+                            <div className="text_overflow">
+                                <h3>
+                                <span><a href={'/team/'+this.state.team.tid}><img width={50} src={this.state.team.image}/>{this.state.team.name}</a></span>
+                                    {this.state.player.shortName}
+                                </h3>
+                                <em>{this.state.player.longName}</em>
                             </div>
                         </div>
                     </div>
-                    <div class="kf_plyer_rating">
+                    <div class="kf_plyer_rating" style={{margin: "20px auto"}}>
                         <span>
-                            <strong>Assists</strong>
-                            <b>15.8</b>
-                            <em>AVG</em>
+                            <strong>Height</strong>
+                            <b>{this.state.player.height}</b>
+                            <em>cm</em>
                         </span>
                         <span>
-                            <strong>Steals</strong>
-                            <b>8.9</b>
-                            <em>AVG</em>
+                            <strong>Weight</strong>
+                            <b>{this.state.player.weight}</b>
+                            <em>kg</em>
                         </span>
                         <span>
-                            <strong>Blocks</strong>
-                            <b>13.6</b>
-                            <em>AVG</em>
+                            <strong>Birthday</strong>
+                            <b>{this.state.player.birthday}</b>
                         </span>
-                    </div>
-
-                    <ul class="kf_table2 kf_tableaside">
-                        <li>
-                            <div>
-                                <span>
-                                    2 Points
-                                    <em>In his career</em>
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    1250
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    3 Points
-                                    <em>In his career</em>
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    680
-                                </span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <span>
-                                    2 Points
-                                    <em>In his career</em>
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    1250
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    3 Points
-                                    <em>In his career</em>
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    680
-                                </span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <span>
-                                    2 Points
-                                    <em>In his career</em>
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    1250
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    3 Points
-                                    <em>In his career</em>
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    680
-                                </span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <span>
-                                    2 Points
-                                    <em>In his career</em>
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    1250
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    3 Points
-                                    <em>In his career</em>
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    680
-                                </span>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <div class="kf_progress1">
-                        <div class="skill-progress">
-                            <span>Shot Accuracy</span>
-                            <div class="progressbars" progress="65%"></div>
-                        </div>
-                        <div class="skill-progress">
-                            <span>Pass Accuracy</span>
-                            <div class="progressbars" progress="88%"></div>
-                        </div>
-                        <div class="skill-progress">
-                            <span>Total Accuracy</span>
-                            <div class="progressbars" progress="75%"></div>
-                        </div>
                     </div>
                 </div>
+                <AbilityTable player={this.state.player}/>
             </div>
         );
+    }
+}
+
+class AbilityTable extends React.Component {
+    constructor(props){
+        super(props);
+    }
+    
+    render() {
+        // !GK
+        if (this.props.player.gkSpeed === 0) {
+            return (    
+                <div className="player-skill">
+                    <div>
+                        <span>Shooting</span>
+                        <Progress
+                            strokeColor={{
+                                '0%': '#e9c46a',
+                                '100%': '#e76f51',
+                            }}
+                            percent={this.props.player.shooting}
+                            />
+                    </div>
+                    
+                    <div>
+                        <span>Physical</span>
+                        <Progress
+                            strokeColor={{
+                                '0%': '#e9c46a',
+                                '100%': '#e76f51',
+                            }}
+                            percent={this.props.player.physic}
+                            />
+                    </div>
+                    
+                    <div>
+                        <span>Passing</span>
+                        <Progress
+                            strokeColor={{
+                                '0%': '#e9c46a',
+                                '100%': '#e76f51',
+                            }}
+                            percent={this.props.player.passing}
+                            />
+                    </div>
+
+                    <div>
+                        <span>Pace</span>
+                        <Progress
+                            strokeColor={{
+                                '0%': '#e9c46a',
+                                '100%': '#e76f51',
+                            }}
+                            percent={this.props.player.pace}
+                            />
+                    </div>
+
+                    <div>
+                        <span>Defending</span>
+                        <Progress
+                            strokeColor={{
+                                '0%': '#e9c46a',
+                                '100%': '#e76f51',
+                            }}
+                            percent={this.props.player.defending}
+                            />
+                    </div>
+
+                    <div>
+                        <span>Dribbling</span>
+                        <Progress
+                            strokeColor={{
+                                '0%': '#e9c46a',
+                                '100%': '#e76f51',
+                            }}
+                            percent={this.props.player.dribbling}
+                            />
+                    </div>
+                </div>
+            );
+        } else {
+            return (
+                <div className="player-skill">
+                    <div>
+                        <span>Speed</span>
+                        <Progress
+                            strokeColor={{
+                                '0%': '#e9c46a',
+                                '100%': '#e76f51',
+                            }}
+                            percent={this.props.player.gkSpeed}
+                            />
+                    </div>
+                    
+                    <div>
+                        <span>Reflexes</span>
+                        <Progress
+                            strokeColor={{
+                                '0%': '#e9c46a',
+                                '100%': '#e76f51',
+                            }}
+                            percent={this.props.player.gkReflexes}
+                            />
+                    </div>
+                    
+                    <div>
+                        <span>Handling</span>
+                        <Progress
+                            strokeColor={{
+                                '0%': '#e9c46a',
+                                '100%': '#e76f51',
+                            }}
+                            percent={this.props.player.gkHandling}
+                            />
+                    </div>
+
+                    <div>
+                        <span>Diving</span>
+                        <Progress
+                            strokeColor={{
+                                '0%': '#e9c46a',
+                                '100%': '#e76f51',
+                            }}
+                            percent={this.props.player.gkDiving}
+                            />
+                    </div>
+                </div>
+                
+            );
+        }
     }
 }
 

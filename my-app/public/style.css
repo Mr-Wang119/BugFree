@@ -1918,8 +1918,8 @@ footer .widget{
 .kf_roster_dec .text > span{
 	color: #fff;
 	float: left;
-	width: 99px;
-	height: 99px;
+	/* width: 99px;
+	height: 99px; */
 	font-size: 50px;
 	font-weight: bold;
 	line-height: 99px;
