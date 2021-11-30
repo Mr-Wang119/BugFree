@@ -4,9 +4,26 @@ public class Guess {
     private int gid;
     private String username;
     private int mid;
-    private int status;
+    private int win;
     private String time;
     private int amount;
+    private int hostwin;
+
+    public int getWin() {
+        return win;
+    }
+
+    public void setWin(int win) {
+        this.win = win;
+    }
+
+    public int getHostwin() {
+        return hostwin;
+    }
+
+    public void setHostwin(int hostwin) {
+        this.hostwin = hostwin;
+    }
 
     public int getGid() {
         return gid;
@@ -30,14 +47,6 @@ public class Guess {
 
     public void setMid(int mid) {
         this.mid = mid;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
     }
 
     public String getTime() {

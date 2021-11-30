@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface GuessDao {
-    @Insert("insert into Guess(username, mid, status, time, amount)" +
-            "values (#{username},#{mid},#{status},#{time},#{amount}")
+    @Insert("insert into Guess(username, mid, win, hostwin, time, amount)" +
+            "values (#{username},#{mid}, #{win}, #{hostwin},#{time},#{amount})")
     void insertGuess(Guess guess);
 
     @Select("select sum(amount) from Guess where mid=#{mid} and status=#{status}")

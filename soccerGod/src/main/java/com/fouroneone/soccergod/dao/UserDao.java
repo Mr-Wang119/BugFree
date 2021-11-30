@@ -34,7 +34,7 @@ public interface UserDao {
     void deleteUserByUin(int uin);
 
     @Update("update UserInfo set points=#{points} where username=#{username}")
-    void updatePoints(String username, int points);
+    void updatePoints(@Param("username") String username, @Param("points") int points);
 
     @Select("select points from UserInfo where username=#{username}")
     int getUserPoints(String username);
