@@ -3,25 +3,25 @@ import axios from 'axios';
 import { Table, Spin} from 'antd';
 const { Column } = Table;
 
-class LeagueDetail extends React.Component {
+class TeamDetail extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             isReady: false,
-            teams: [],
-            league: null
+            players: [],
+            team: {}
         }
     }
 
     componentDidMount() {
         const _this = this;
         let lid = this.props.match.params.id;
-        let path = "http://localhost:8080/league/"+lid;
+        let path = "http://localhost:8080/team/"+lid;
         axios.get(path)
         .then(function(response) {
             let data = response.data;
             if (data.success == true) {
-                _this.setState({isReady: true, teams: data.detail.teams, league: data.detail.league})
+                _this.setState({isReady: true, players: data.detail.players, team: data.detail.team})
             } else {
                 _this.props.history.push('/error');
             }
@@ -31,7 +31,7 @@ class LeagueDetail extends React.Component {
             _this.props.history.push('/error');
         })
     }
-    
+
     render() {
         if (this.state.isReady == false) {
             return (
@@ -41,20 +41,28 @@ class LeagueDetail extends React.Component {
         return (
             <div>
                 <div>
-                    <p>{this.state.league.desc}</p>
+                    <p>{this.state.team.name}</p>
                 </div>
-                <Table dataSource={this.state.teams}>
+                <Table dataSource={this.state.players}>
                     <Column
-                    title="Logo"
-                    dataIndex="image"
-                    render={img => (<img src={img} alt="" width="100"></img>)}
+                        title="Player"
+                        dataIndex="playerImage"
+                        render={img => (<img src={img} alt="" width="100"></img>)}
                     />
                     <Column
-                    title="Team"
-                    dataIndex="teamName"
-                    render={(text, record) => (
-                        <a href={"/team/"+record.tid}>{text}</a>
+                        title="Name"
+                        dataIndex="shortName"
+                        render={(text, record) => (
+                            <a href={"/team/"+record.pid}>{text}</a>
                     )}
+                    />
+                    <Column
+                        title="Nation"
+                        dataIndex="nationality"
+                    />
+                    <Column
+                        title="Position"
+                        dataIndex="position"
                     />
                 </Table>
             </div>
@@ -62,4 +70,4 @@ class LeagueDetail extends React.Component {
     }
 }
 
-export default LeagueDetail;
+export default TeamDetail;

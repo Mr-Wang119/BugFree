@@ -7,6 +7,7 @@ import User from './user'
 import Error from './error'
 import LeagueList from './leagueList'
 import LeagueDetail from './leagueDetail';
+import TeamDetail from './teamDetail';
 
 import { Layout, Menu, Breadcrumb } from 'antd';
 
@@ -31,6 +32,7 @@ class App extends React.Component {
                         <Route path="/user/:username" component={User}></Route>
                         <Route exact path="/league" component={LeagueList}></Route>
                         <Route path="/league/:id" component={LeagueDetail}></Route>
+                        <Route path="/team/:id" component={TeamDetail}></Route>
                     </Switch>
                 </Content>
             </Layout>

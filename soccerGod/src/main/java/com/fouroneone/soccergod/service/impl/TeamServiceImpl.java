@@ -22,4 +22,9 @@ public class TeamServiceImpl implements TeamService {
     public List<Team> getTeamByName(String keywords) {
         return teamDao.searchTeamWithName(keywords);
     }
+
+    @Override
+    public Team getTeamById(int id) {
+        return this.teamDao.getTeamById(id);
+    }
 }

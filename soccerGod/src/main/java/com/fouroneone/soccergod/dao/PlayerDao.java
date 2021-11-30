@@ -13,6 +13,4 @@ public interface PlayerDao {
 
     @Select("select * from Player where shortName = #{shortName}")
     List<Player> findPlayerByShortName(String shortName);
-
-
 }

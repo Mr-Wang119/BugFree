@@ -7,4 +7,5 @@ public interface TeamService {
 
     List<Team> getTeamByDesc(String keywords);
     List<Team> getTeamByName(String keywords);
+    Team getTeamById(int id);
 }

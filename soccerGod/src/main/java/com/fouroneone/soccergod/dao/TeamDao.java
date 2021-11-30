@@ -13,4 +13,7 @@ public interface TeamDao {
 
     @Select("select * from Team where description like CONCAT('%', #{0}, '%')")
     List<Team> searchTeamWithDesc(String keyword);
+
+    @Select("SELECT * FROM Team WHERE tid=#{id}")
+    Team getTeamById(int id);
 }
