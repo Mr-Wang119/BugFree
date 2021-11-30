@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @CrossOrigin(origins = "http://localhost:3000")
@@ -32,7 +33,7 @@ public class LeagueController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/league/:id", method = RequestMethod.GET)
+    @RequestMapping(value = "/league/{id}", method = RequestMethod.GET)
     public Result leagueDetail(@PathVariable Integer id) {
         Result result = new Result();
         List<LeagueDetail> leagueDetail = leagueDetailService.getLeagueDetailByLeagueID(id);
@@ -41,9 +42,16 @@ public class LeagueController {
             result.setMsg("Wrong id");
             result.setSuccess(false);
         } else {
-            result.setSuccess(true);
-            result.setDetail(leagueDetail);
-            result.setMsg("");
+            League league = leagueService.getLeagueById(id);
+            if(league == null) {
+                result.setDetail(null);
+                result.setMsg("N/A");
+                result.setSuccess(false);
+            } else {
+                result.setSuccess(true);
+                result.setDetail(leagueDetail);
+                result.setMsg("");
+            }
         }
         return result;
     }

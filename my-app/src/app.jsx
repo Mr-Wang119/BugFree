@@ -6,6 +6,7 @@ import Signup from './signup';
 import User from './user'
 import Error from './error'
 import LeagueList from './leagueList'
+import LeagueDetail from './leagueDetail';
 
 import { Layout, Menu, Breadcrumb } from 'antd';
 
@@ -29,6 +30,7 @@ class App extends React.Component {
                         <Route exact path="/homepage" component={Homepage}></Route>
                         <Route path="/user/:username" component={User}></Route>
                         <Route exact path="/league" component={LeagueList}></Route>
+                        <Route path="/league/:id" component={LeagueDetail}></Route>
                     </Switch>
                 </Content>
             </Layout>

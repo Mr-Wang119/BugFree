@@ -8,10 +8,10 @@ import java.util.List;
 
 @Mapper
 public interface LeagueDetailDao {
-    @Select("SELECT lid, tid, Team.name as teamName, image, League.name as leagueName, `desc` FROM Team JOIN TeamBelong USING(tid) JOIN League USING(lid) WHERE lid=#{id};")
+    @Select("SELECT tid, Team.name as teamName, image FROM Team JOIN TeamBelong USING(tid) JOIN League USING(lid) WHERE lid=#{id};")
     public List<LeagueDetail> getLeagueDetailByLeagueID(int id);
 
-    @Select("SELECT lid, tid, Team.name as teamName, image, League.name as leagueName, `desc` FROM Team JOIN TeamBelong USING(tid) JOIN League USING(lid) ORDER BY League.`name`;")
+    @Select("SELECT tid, Team.name as teamName, image FROM Team JOIN TeamBelong USING(tid) JOIN League USING(lid) ORDER BY League.`name`;")
     public List<LeagueDetail> getAllLeagueDetail();
 
 }
