@@ -51,7 +51,6 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public Result signUp(UserInfo user) {
-        System.out.println(user.getEmail());
         return userService.register(user);
     }
 
