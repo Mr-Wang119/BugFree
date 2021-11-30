@@ -95,4 +95,22 @@ public class UserController {
         return res;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/edit/{username}", method = RequestMethod.POST)
+    public Result editUser(@PathVariable String username, HttpServletRequest request) {
+        Result res = new Result();
+        UserInfo user = new UserInfo();
+        user.setName(request.getParameter("name"));
+        user.setPassword(request.getParameter("password"));
+        user.setBirthday(request.getParameter("birthday"));
+        user.setUsername(username);
+        try {
+            userService.updateUser(user);
+            res.setSuccess(true);
+        } catch (Exception e) {
+            res.setSuccess(false);
+        }
+        return res;
+    }
+
 }

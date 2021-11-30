@@ -81,7 +81,7 @@ class Signup extends React.Component {
         .then(function (response) {
             console.log(response.data);
             // session
-            _this.props.history.go(-1);
+            _this.props.history.push('/user/'+_this.state.username);
         }).catch(function (error) {
             console.log(error);
             _this.props.history.push('/error');

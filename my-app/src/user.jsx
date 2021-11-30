@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from "axios";
 import { Spin } from 'antd';
-
+import { Descriptions} from 'antd';
+import './css/user.css'
 
 class User extends React.Component {
     constructor(props) {
@@ -40,6 +41,7 @@ class User extends React.Component {
             this.props.history.go(-1);
         }
     }
+    
 
     render() {
         if (!this.state.success) {
@@ -58,155 +60,34 @@ class Info extends React.Component {
     constructor(props){
         super(props);
     }
+
     render(){
         return (
-            <div>
-                <div class="widget roster_sidebar">
-                    <h6 class="kf_hd1 margin_0">
-                        <span>User Information</span>
-                    </h6>
-                    <div class="kf_roster_dec">
-                        <figure>
-                            <img src="extra-images/rooster5.png" alt="" />
-                        </figure>
-                        <div class="text">
-                            <div class="text_overflow">
-                                <h3>{this.props.info.name}</h3>
-                                <em>1st shooting Gaurd</em>
-                            </div>
+            <div style={{margin: "20px auto", width: "80%"}}>
+                <h6 className="kf_hd1 margin_0">
+                    <span>User Information</span>
+                </h6>
+                <div className="kf_roster_dec">
+                    <div className="text">
+                        <div className="text_overflow">
+                            <h3>{this.props.info.username}</h3>
+                            <em><i className="fa fa-bitcoin" style={{color: "#ffbe00"}}></i> {this.props.info.points} POINTS</em>
                         </div>
                     </div>
-                    <div class="kf_plyer_rating">
-                        <span>
-                            <strong>Assists</strong>
-                            <b>15.8</b>
-                            <em>AVG</em>
-                        </span>
-                        <span>
-                            <strong>Steals</strong>
-                            <b>8.9</b>
-                            <em>AVG</em>
-                        </span>
-                        <span>
-                            <strong>Blocks</strong>
-                            <b>13.6</b>
-                            <em>AVG</em>
-                        </span>
-                    </div>
+                </div>
 
-                    <ul class="kf_table2 kf_tableaside">
-                        <li>
-                            <div>
-                                <span>
-                                    2 Points
-                                    <em>In his career</em>
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    1250
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    3 Points
-                                    <em>In his career</em>
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    680
-                                </span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <span>
-                                    2 Points
-                                    <em>In his career</em>
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    1250
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    3 Points
-                                    <em>In his career</em>
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    680
-                                </span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <span>
-                                    2 Points
-                                    <em>In his career</em>
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    1250
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    3 Points
-                                    <em>In his career</em>
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    680
-                                </span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <span>
-                                    2 Points
-                                    <em>In his career</em>
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    1250
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    3 Points
-                                    <em>In his career</em>
-                                </span>
-                            </div>
-                            <div>
-                                <span>
-                                    680
-                                </span>
-                            </div>
-                        </li>
-                    </ul>
+                <Descriptions
+                    bordered
+                    title="Custom Size"
+                    >
+                    <Descriptions.Item label="Name" span={1.5}>{this.props.info.name}</Descriptions.Item>
+                    <Descriptions.Item label="Email" span={1.5}>{this.props.info.email}</Descriptions.Item>
+                    <Descriptions.Item label="Birthday" span={1.5}>{this.props.info.birthday}</Descriptions.Item>
+                    <Descriptions.Item label="Password">{this.props.info.password}</Descriptions.Item>
+                </Descriptions>
 
-                    <div class="kf_progress1">
-                        <div class="skill-progress">
-                            <span>Shot Accuracy</span>
-                            <div class="progressbars" progress="65%"></div>
-                        </div>
-                        <div class="skill-progress">
-                            <span>Pass Accuracy</span>
-                            <div class="progressbars" progress="88%"></div>
-                        </div>
-                        <div class="skill-progress">
-                            <span>Total Accuracy</span>
-                            <div class="progressbars" progress="75%"></div>
-                        </div>
-                    </div>
+                <div id="edit-btn">
+                    <button className="btn btn-warning mb-3"><a href={'/edit/'+this.props.info.username}>EDIT</a></button>
                 </div>
             </div>
         );

@@ -11,6 +11,7 @@ import TeamDetail from './teamDetail';
 import Player from './player';
 import SearchResult from './components/SearchResult';
 import MatchDetail from './matchDetail';
+import Edit from './edit';
 
 import { Layout, Menu, Breadcrumb } from 'antd';
 
@@ -39,6 +40,7 @@ class App extends React.Component {
                         <Route path="/player/:id" component={Player}></Route>
                         <Route path="/search/:keyword" component={SearchResult}></Route>
                         <Route path="/match/:id" component={MatchDetail}></Route>
+                        <Route path="/edit/:username" component={Edit}></Route>
                     </Switch>
                 </Content>
             </Layout>

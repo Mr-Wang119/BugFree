@@ -48,22 +48,18 @@ class Header extends React.Component {
                                     <ul className="nav">
                                         <li><a href="/homepage">home</a></li>
                                         <li><a href="/league">league</a></li>
-                                        <li><a href="#">shop</a></li>
-                                        <li><a href="#">team overview</a></li>
-                                        <li><a href="#">team schedule</a></li>
-                                        <li><a href="#">contact us</a></li>
-                                        <li><a href="#">widget</a></li>
+                                        <li><a href="/team">team</a></li>
+                                        <li><a href="/match">match</a></li>
+                                        <li><a href="#links">links</a></li>
                                     </ul>
                                     <div id="kode-responsive-navigation" className="dl-menuwrapper">
                                         <button className="dl-trigger">Open Menu</button>
                                         <ul className="dl-menu">
                                             <li><a href="/homepage">home</a></li>
                                             <li><a href="/league">league</a></li>
-                                            <li><a href="#">shop</a></li>
-                                            <li><a href="#">team overview</a></li>
-                                            <li><a href="#">team schedule</a></li>
-                                            <li><a href="#">contact us</a></li>
-                                            <li><a href="#">widget</a></li>
+                                            <li><a href="/team">team</a></li>
+                                            <li><a href="/match">match</a></li>
+                                            <li><a href="#links">links</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -98,22 +94,18 @@ class Header extends React.Component {
                                     <ul className="nav">
                                         <li><a href="/homepage">home</a></li>
                                         <li><a href="/league">league</a></li>
-                                        <li><a href="#">shop</a></li>
-                                        <li><a href="#">team overview</a></li>
-                                        <li><a href="#">team schedule</a></li>
-                                        <li><a href="#">contact us</a></li>
-                                        <li><a href="#">widget</a></li>
+                                        <li><a href="/team">team</a></li>
+                                        <li><a href="/match">match</a></li>
+                                        <li><a href="#links">links</a></li>
                                     </ul>
                                     <div id="kode-responsive-navigation" className="dl-menuwrapper">
                                         <button className="dl-trigger">Open Menu</button>
                                         <ul className="dl-menu">
                                             <li><a href="/homepage">home</a></li>
                                             <li><a href="/league">league</a></li>
-                                            <li><a href="#">shop</a></li>
-                                            <li><a href="#">team overview</a></li>
-                                            <li><a href="#">team schedule</a></li>
-                                            <li><a href="#">contact us</a></li>
-                                            <li><a href="#">widget</a></li>
+                                            <li><a href="/team">team</a></li>
+                                            <li><a href="/match">match</a></li>
+                                            <li><a href="#links">links</a></li>
                                         </ul>
                                     </div>
                                 </div>

@@ -41,9 +41,12 @@ class Footer extends React.Component {
                                 <div className="widget widget_link2">
                                     <h2 className="kf_hd7">Useful link</h2>
                                     
-                                    <ul className="links_dec links_dec2">
+                                    <ul className="links_dec links_dec2" id="links">
                                         <li><a href="https://www.fifa.com/">FIFA</a></li>
                                         <li><a href="https://www.uefa.com/">UEFA</a></li>
+                                        <li><a href="https://www.transfermarkt.us/">Transfermarkt</a></li>
+                                        <li><a href="https://www.thecfa.cn/">CFA</a></li>
+                                        <li><a href="https://www.premierleague.com/home">Premier League</a></li>
                                     </ul>
                                 
                                 </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 
+
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -78,8 +79,10 @@ class Login extends React.Component {
                         <label htmlFor="password">Password</label>
                         <input type="password" id="password" onInput={(event)=>this.setUserInfo(event, 'password')} className="form-control" placeholder="Password"/>
                     </div>
-                    <div className="form-floating mt-3">
-                        <button onClick={this.submitForm} className="btn btn-warning">LOG IN</button>
+                    <div className="form-floating">
+                        <div className="form-floating mb-3">
+                            <button onClick={this.submitForm} className="btn btn-warning mb-3">LOG IN</button>
+                        </div>
                     </div>
                     <div className="form-floating mb-3">
                         <p style={{color: "indianred"}}>{this.state.error}</p>
@@ -89,5 +92,4 @@ class Login extends React.Component {
         );
     }
 }
-
 export default Login;

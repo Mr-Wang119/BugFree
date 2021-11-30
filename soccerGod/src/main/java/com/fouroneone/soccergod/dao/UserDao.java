@@ -25,9 +25,9 @@ public interface UserDao {
             "values (#{email}, #{password}, #{username}, #{name}, #{birthday})")
     void insertUser(UserInfo info);
 
-    @Update("update UserInfo set uin=#{uin}, email=#{email}, password=#{password}, " +
-            "username=#{username}, name=#{name}, birthday=#{birthday},password=#{password} " +
-            "where uin=#{uin}")
+    @Update("update UserInfo set password=#{password}, " +
+            "name=#{name}, birthday=#{birthday} " +
+            "where username=#{username}")
     void updateUser(UserInfo info);
 
     @Delete("delete from UserInfo where uin=#{uin}")
