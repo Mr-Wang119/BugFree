@@ -117,4 +117,21 @@ public class UserServiceImpl implements UserService {
         userDao.deleteUserByUin(uin);
     }
 
+    @Override
+    public boolean isSignin(HttpSession session) {
+        return session.getAttribute("username")!=null;
+    }
+
+
+
+    @Override
+    public void updatePoints(String username, int points) {
+        userDao.updatePoints(username, points);
+    }
+
+    @Override
+    public int getPoints(String username) {
+        return userDao.getUserPoints(username);
+    }
+
 }

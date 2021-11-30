@@ -40,8 +40,8 @@ class Header extends React.Component {
                         <div className="container">
                             <div className="kode_logo_bar">
                                 <div className="logo">
-                                    <a href="#">
-                                        <img src="/images/logo.png" alt=""  height="10"/>
+                                    <a href="/homepage">
+                                        <img src="/images/logo.png" alt=""  height="60"/>
                                     </a>
                                 </div>
                                 <div className="kode_navigation">

@@ -16,5 +16,7 @@ public interface UserService {
     void addUser(UserInfo user);
     void updateUser(UserInfo user);
     void deleteUserWithUin(int uin);
-
+    boolean isSignin(HttpSession session);
+    void updatePoints(String username, int points);
+    int getPoints(String username);
 }
