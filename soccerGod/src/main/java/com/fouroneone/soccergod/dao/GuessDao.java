@@ -12,6 +12,6 @@ public interface GuessDao {
             "values (#{username},#{mid}, #{win}, #{hostwin},#{time},#{amount})")
     void insertGuess(Guess guess);
 
-    @Select("select sum(amount) from Guess where mid=#{mid} and status=#{status}")
-    Integer getHostGuestPond(@Param("mid") int mid, @Param("status") int status);
+    @Select("select sum(amount) from Guess where mid=#{mid} and hostwin=#{hostwin}")
+    Integer getHostGuestPond(@Param("mid") int mid, @Param("hostwin") int hostwin);
 }
