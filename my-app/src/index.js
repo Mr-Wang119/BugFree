@@ -1,12 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter} from 'react-router-dom';
 import App from './app';
 import reactDom from 'react-dom';
 import Header from './header';
+import Footer from './footer'
+
 
 reactDom.render(
-    <Router>
+    <BrowserRouter>
+        <Header />
         <App />
-    </Router>, 
-    document.getElementById('root')
-);
+        <Footer/>
+    </BrowserRouter>
+    , document.getElementById('root'));

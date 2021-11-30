@@ -1,6 +1,4 @@
-import { withRouter } from 'react-router';
 import React from 'react';
-import reactDom from 'react-dom';
 
 class Header extends React.Component {
     constructor(props) {
@@ -129,5 +127,5 @@ class Header extends React.Component {
 
 }
 
-reactDom.render(<Header/>, document.getElementById('header'));
-export default withRouter(Header);
+// reactDom.render(<Header/>, document.getElementById('header'));
+export default Header;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import reactDom from 'react-dom';
 import axios from 'axios';
 
-import { Card, Row, Col } from "antd";
+import { Card, Row, Col, Spin } from "antd";
 import 'antd/dist/antd.css';
 
 
@@ -19,7 +19,7 @@ class Homepage extends Component {
 
     render() {
         if (!this.state.isLoaded) {
-            return <div>Loading...</div>
+            return <Spin delay="1000"/>
         } else {
             const matchList = this.state.matches.map(function (match) {
                 return (
@@ -52,10 +52,10 @@ class Homepage extends Component {
                 <div className="kode_content_wrap">
                     <div>
                         {/* <!--Banner Thumb START--> */}
-                        <div class="thumb">
-                            <img src="extra-images/banner1.jpg" alt="" />
-                            <div class="container">
-                                <div class="banner_caption text-center">
+                        <div className="thumb">
+                            <img src="extra-images/banner1.jpg" alt="" style={{opacity: "0.85"}}/>
+                            <div className="container" style={{textShadow: "1px 1px rgb(100 100 100)"}}>
+                                <div className="banner_caption text-center">
                                     <span>Welcome to SoccorGod !!</span>
                                     <h1>
                                         {this.state.matches[0].hostName} <b>vs</b> {this.state.matches[0].guestName}

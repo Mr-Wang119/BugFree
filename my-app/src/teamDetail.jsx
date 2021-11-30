@@ -41,30 +41,34 @@ class TeamDetail extends React.Component {
         return (
             <div>
                 <div>
-                    <p>{this.state.team.name}</p>
+                    <h6 className="kf_hd1 margin_0">
+                        {this.state.team.name}
+                    </h6>
                 </div>
-                <Table dataSource={this.state.players}>
-                    <Column
-                        title="Player"
-                        dataIndex="playerImage"
-                        render={img => (<img src={img} alt="" width="100"></img>)}
-                    />
-                    <Column
-                        title="Name"
-                        dataIndex="shortName"
-                        render={(text, record) => (
-                            <a href={"/team/"+record.pid}>{text}</a>
-                    )}
-                    />
-                    <Column
-                        title="Nation"
-                        dataIndex="nationality"
-                    />
-                    <Column
-                        title="Position"
-                        dataIndex="position"
-                    />
-                </Table>
+                <div style={{margin: "0 auto", width: "60%"}}>
+                    <Table dataSource={this.state.players}>
+                        <Column
+                            title="Player"
+                            dataIndex="playerImage"
+                            render={img => (<img src={img} alt="" width="100"></img>)}
+                        />
+                        <Column
+                            title="Name"
+                            dataIndex="shortName"
+                            render={(text, record) => (
+                                <a href={"/player/"+record.pid}>{text}</a>
+                        )}
+                        />
+                        <Column
+                            title="Nation"
+                            dataIndex="nationality"
+                        />
+                        <Column
+                            title="Position"
+                            dataIndex="position"
+                        />
+                    </Table>
+                </div>
             </div>
         );
     }

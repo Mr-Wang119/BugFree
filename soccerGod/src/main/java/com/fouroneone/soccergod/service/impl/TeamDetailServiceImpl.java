@@ -1,5 +1,6 @@
 package com.fouroneone.soccergod.service.impl;
 
+import com.fouroneone.soccergod.bean.Team;
 import com.fouroneone.soccergod.bean.TeamDetail;
 import com.fouroneone.soccergod.dao.TeamDetailDao;
 import com.fouroneone.soccergod.service.TeamDetailService;
@@ -18,5 +19,10 @@ public class TeamDetailServiceImpl implements TeamDetailService {
     @Override
     public List<TeamDetail> getTeamDetail(int id) {
         return this.teamDetailDao.getTeamDetail(id);
+    }
+
+    @Override
+    public Team getTeamByPlayerId(int id) {
+        return this.teamDetailDao.getTeamByPlayerId(id);
     }
 }

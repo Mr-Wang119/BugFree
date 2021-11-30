@@ -40,23 +40,28 @@ class LeagueDetail extends React.Component {
         }
         return (
             <div>
-                <div>
+                <div class="kf_overview_contant">
+                    <h6 className="kf_hd1 margin_0">
+                        {this.state.league.name}
+                    </h6>
                     <p>{this.state.league.desc}</p>
                 </div>
-                <Table dataSource={this.state.teams}>
-                    <Column
-                    title="Logo"
-                    dataIndex="image"
-                    render={img => (<img src={img} alt="" width="100"></img>)}
-                    />
-                    <Column
-                    title="Team"
-                    dataIndex="teamName"
-                    render={(text, record) => (
-                        <a href={"/team/"+record.tid}>{text}</a>
-                    )}
-                    />
-                </Table>
+                <div style={{width: "60%", margin: "0 auto"}}>
+                    <Table dataSource={this.state.teams}>
+                        <Column
+                        title="Logo"
+                        dataIndex="image"
+                        render={img => (<img src={img} alt="" width="100"></img>)}
+                        />
+                        <Column
+                        title="Team"
+                        dataIndex="teamName"
+                        render={(text, record) => (
+                            <a href={"/team/"+record.tid}>{text}</a>
+                        )}
+                        />
+                    </Table>
+                </div>
             </div>
         );
     }
