@@ -2,7 +2,7 @@ package com.fouroneone.soccergod.bean;
 
 public class Guess {
     private int gid;
-    private int uin;
+    private String username;
     private int mid;
     private int status;
     private String time;
@@ -16,12 +16,12 @@ public class Guess {
         this.gid = gid;
     }
 
-    public int getUin() {
-        return uin;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUin(int uin) {
-        this.uin = uin;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getMid() {

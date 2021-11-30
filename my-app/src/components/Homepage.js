@@ -81,7 +81,6 @@ class Homepage extends Component {
                     <div className="result_slider" style={{ padding: '30px' }}>
                     <HotLeagues/>
                     </div>
-                    <SearchInput/>
                 </div>
             );
         }

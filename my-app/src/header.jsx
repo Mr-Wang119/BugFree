@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchInput from './components/SearchInput';
 
 class Header extends React.Component {
     constructor(props) {
@@ -65,6 +66,7 @@ class Header extends React.Component {
                                 </div>
                             </div>
                         </div>
+                        <SearchInput/>
                     </header>
                 </div>
             );
@@ -111,6 +113,7 @@ class Header extends React.Component {
                                 </div>
                             </div>
                         </div>
+                        <SearchInput/>
                     </header>
                 </div>
             );
