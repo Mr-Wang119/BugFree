@@ -23,7 +23,9 @@ import java.util.Date;
 public class BetController {
     @Autowired
     private UserService userService;
+    @Autowired
     private CompetitionService competitionService;
+    @Autowired
     private GuessService guessService;
 
     @ResponseBody
@@ -53,7 +55,8 @@ public class BetController {
                 SimpleDateFormat dateFormat=new SimpleDateFormat("YYYY-MM-dd");
                 String date_str = dateFormat.format(date);
                 guess.setTime(date_str);
-                guess.setStatus(hostWin);
+                guess.setHostwin(hostWin);
+                guess.setWin(-1);
                 guessService.addNewGuess(guess);
                 result = new Result("Bet succ", true, null);
             }
