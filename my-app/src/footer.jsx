@@ -17,7 +17,7 @@ class Footer extends React.Component {
                             <div className="col-md-6">
                                 <div className="widget widget_text">
                                     <div className="logo">
-                                        <a href="#"><img src="/images/logo.png" alt="" width="60" height="60"/></a>
+                                        <a href="#"><img src="/images/logo.png" alt="" height="60"/></a>
                                     </div>
                                     <p>Soccer God, designed for CS411.</p>
                                     <ul className="kf_contact_meta">

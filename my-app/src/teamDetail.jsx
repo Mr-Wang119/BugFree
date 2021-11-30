@@ -40,11 +40,11 @@ class TeamDetail extends React.Component {
         }
         return (
             <div>
-                <div>
-                    <h6 className="kf_hd1 margin_0">
-                        {this.state.team.name}
-                    </h6>
-                </div>
+                    <div class="innner_banner" style={{ marginBottom: "20px" }}>
+                        <div class="container">
+                            <h3>Team {this.state.team.name}</h3>
+                        </div>
+                    </div>
                 <div style={{margin: "0 auto", width: "60%"}}>
                 <meta name="referrer" content="no-referrer" />
                     <Table dataSource={this.state.players}>

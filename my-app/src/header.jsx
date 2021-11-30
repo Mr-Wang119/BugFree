@@ -20,12 +20,12 @@ class Header extends React.Component {
         if (this.state.isLogin) {
             let username = localStorage.getItem('usernameToken');
             return (
-                <div class="kode_wrapper"> 
-                    <header class="kode_header_2">
-                        <div class="kf_top_bar">
-                            <div class="container">
-                                <div class="kf_right_dec">
-                                    <ul class="kf_user">
+                <div className="kode_wrapper"> 
+                    <header className="kode_header_2">
+                        <div className="kf_top_bar">
+                            <div className="container">
+                                <div className="kf_right_dec">
+                                    <ul className="kf_user">
                                         <li><a href={"/user/"+username}>{username}</a></li>
                                         <li><a onClick={()=>{
                                             this.setState({isLogin: false});
@@ -33,19 +33,19 @@ class Header extends React.Component {
                                             this.props.history.push('/homepage');
                                         }}>Log out</a></li>
                                     </ul>
-                                    <a href="#" data-toggle="modal" data-target="#search" class="kode_search"><i class="fa fa-search"></i></a>
+                                    <a href="#" data-toggle="modal" data-target="#search" className="kode_search"><i class="fa fa-search"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="container">
-                            <div class="kode_logo_bar">
-                                <div class="logo">
+                        <div className="container">
+                            <div className="kode_logo_bar">
+                                <div className="logo">
                                     <a href="#">
-                                        <img src="/images/logo.png" alt=""  width="50" height="50"/>
+                                        <img src="/images/logo.png" alt=""  height="10"/>
                                     </a>
                                 </div>
-                                <div class="kode_navigation">
-                                    <ul class="nav">
+                                <div className="kode_navigation">
+                                    <ul className="nav">
                                         <li><a href="/homepage">home</a></li>
                                         <li><a href="/league">league</a></li>
                                         <li><a href="#">shop</a></li>
@@ -54,9 +54,9 @@ class Header extends React.Component {
                                         <li><a href="#">contact us</a></li>
                                         <li><a href="#">widget</a></li>
                                     </ul>
-                                    <div id="kode-responsive-navigation" class="dl-menuwrapper">
-                                        <button class="dl-trigger">Open Menu</button>
-                                        <ul class="dl-menu">
+                                    <div id="kode-responsive-navigation" className="dl-menuwrapper">
+                                        <button className="dl-trigger">Open Menu</button>
+                                        <ul className="dl-menu">
                                             <li><a href="/homepage">home</a></li>
                                             <li><a href="/league">league</a></li>
                                             <li><a href="#">shop</a></li>
@@ -74,28 +74,28 @@ class Header extends React.Component {
             );
         } else {
             return (
-                <div class="kode_wrapper"> 
-                    <header class="kode_header_2">
-                        <div class="kf_top_bar">
-                            <div class="container">
-                                <div class="kf_right_dec">
-                                    <ul class="kf_user">
-                                        <li><a href="/signup"><i class="fa fa-lock"></i>Sign up</a></li>
+                <div className="kode_wrapper"> 
+                    <header className="kode_header_2">
+                        <div className="kf_top_bar">
+                            <div className="container">
+                                <div className="kf_right_dec">
+                                    <ul className="kf_user">
+                                        <li><a href="/signup"><i className="fa fa-lock"></i>Sign up</a></li>
                                         <li><a href="/login">Login</a></li>
                                     </ul>
-                                    <a href="#" data-toggle="modal" data-target="#search" class="kode_search"><i class="fa fa-search"></i></a>
+                                    <a href="#" data-toggle="modal" data-target="#search" className="kode_search"><i class="fa fa-search"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="container">
-                            <div class="kode_logo_bar">
-                                <div class="logo">
-                                    <a href="#">
-                                        <img src="/images/logo.png" alt="" width="60" height="60"/>
+                        <div className="container">
+                            <div className="kode_logo_bar">
+                                <div className="logo">
+                                    <a href="/homepage">
+                                        <img src="/images/logo.png" alt="" height="60"/>
                                     </a>
                                 </div>
-                                <div class="kode_navigation">
-                                    <ul class="nav">
+                                <div className="kode_navigation">
+                                    <ul className="nav">
                                         <li><a href="/homepage">home</a></li>
                                         <li><a href="/league">league</a></li>
                                         <li><a href="#">shop</a></li>
@@ -104,9 +104,9 @@ class Header extends React.Component {
                                         <li><a href="#">contact us</a></li>
                                         <li><a href="#">widget</a></li>
                                     </ul>
-                                    <div id="kode-responsive-navigation" class="dl-menuwrapper">
-                                        <button class="dl-trigger">Open Menu</button>
-                                        <ul class="dl-menu">
+                                    <div id="kode-responsive-navigation" className="dl-menuwrapper">
+                                        <button className="dl-trigger">Open Menu</button>
+                                        <ul className="dl-menu">
                                             <li><a href="/homepage">home</a></li>
                                             <li><a href="/league">league</a></li>
                                             <li><a href="#">shop</a></li>
