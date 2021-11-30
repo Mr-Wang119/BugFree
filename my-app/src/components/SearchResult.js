@@ -8,7 +8,8 @@ class SearchResult extends Component {
         super(props);
         this.state = {
             teams: new Map(),
-            isLoaded: false
+            isLoaded: false,
+            keyword: ""
         }
   }
   render() {
@@ -52,8 +53,9 @@ class SearchResult extends Component {
 
   componentDidMount() {
       const _this = this;
-      axios.post('http://localhost:8080/search/teamkeyword', {
-          "keyword": this.props.keyword})
+      this.state.keyword = this.props.match.params.keyword;
+      axios.post('http://localhost:8080/search/keyword', {
+          "keyword": this.state.keyword})
         .then(function (response) {
             _this.setState({
                 teams: response.data,

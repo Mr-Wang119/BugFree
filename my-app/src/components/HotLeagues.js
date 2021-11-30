@@ -68,7 +68,8 @@ class LeagueCard extends Component {
                                 {teamArr}
                             </ul>
                         </div>
-                        <input class="input-btn" type="button" value="Show All"></input>
+                        <input class="input-btn" type="button" value="Show All" 
+                            onClick={()=>window.location.href='/league/'+this.props.leagueSet.league.lid}></input>
                     </div>
                 </Card>
             </Col>
@@ -83,13 +84,13 @@ class TeamRow extends Component {
 
     render() {
         return (
-            <li>
+            <li onClick={()=>window.location.href='/team/'+this.props.team.tid}>
                 <div class="table_no">
                     <span>{this.props.team.teamName}</span>
                 </div>
                 <div class="team_logo">
                     <span><img src={this.props.team.image} alt="" width="50" height="50"/></span>
-                    <a href="#">{this.props.team.teamName}</a>
+                    <a href={'/team/'+this.props.team.tid}>{this.props.team.teamName}</a>
                 </div>
             </li>
         )

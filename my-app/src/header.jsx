@@ -41,7 +41,7 @@ class Header extends React.Component {
                             <div class="kode_logo_bar">
                                 <div class="logo">
                                     <a href="#">
-                                        <img src="images/logo.png" alt=""  width="50" height="50"/>
+                                        <img src="/images/logo.png" alt=""  width="50" height="50"/>
                                     </a>
                                 </div>
                                 <div class="kode_navigation">
@@ -91,7 +91,7 @@ class Header extends React.Component {
                             <div class="kode_logo_bar">
                                 <div class="logo">
                                     <a href="#">
-                                        <img src="images/logo.png" alt="" width="60" height="60"/>
+                                        <img src="/images/logo.png" alt="" width="60" height="60"/>
                                     </a>
                                 </div>
                                 <div class="kode_navigation">

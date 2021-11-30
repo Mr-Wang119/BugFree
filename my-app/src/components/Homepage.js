@@ -5,6 +5,8 @@ import axios from 'axios';
 import { Card, Row, Col, Spin } from "antd";
 import 'antd/dist/antd.css';
 import HotLeagues from './HotLeagues';
+import SearchInput from './SearchInput';
+import api from '../utils/api';
 
 
 
@@ -22,10 +24,11 @@ class Homepage extends Component {
         if (!this.state.isLoaded) {
             return <Spin delay="1000"/>
         } else {
+            const _this = this;
             const matchList = this.state.matches.map(function (match) {
                 return (
                     <Col span={8}>
-                        <Card style={{ background: '#ECECEC', }}>
+                        <Card style={{ background: '#ECECEC', }} onClick={()=>window.location.href='/match/'.concat(match.mid)}>
                             <div className="kf_result_thumb" id={match.mid}>
                                 <span>{match.time}</span>
                                 <div class="kf_result">
@@ -43,7 +46,7 @@ class Homepage extends Component {
                                         <a href="#">{match.guestName}</a>
                                     </div>
                                 </div>
-                                <a href="#">{match.name}</a>
+                                <a href={"/match/"+match.mid}>{match.name}</a>
                             </div>
                         </Card>
                     </Col>
@@ -62,7 +65,7 @@ class Homepage extends Component {
                                         {this.state.matches[0].hostName} <b>vs</b> {this.state.matches[0].guestName}
                                     </h1>
                                     <p>{this.state.matches[0].time}, {this.state.matches[0].name}</p>
-                                    <a href="#" class="btn-1">Check for detail</a>
+                                    <a href={"/match/"+this.state.matches[0].mid} class="btn-1">Check for detail</a>
                                 </div>
                             </div>
                         </div>
@@ -78,6 +81,7 @@ class Homepage extends Component {
                     <div className="result_slider" style={{ padding: '30px' }}>
                     <HotLeagues/>
                     </div>
+                    <SearchInput/>
                 </div>
             );
         }
@@ -85,7 +89,7 @@ class Homepage extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/recentCompetition', { params: { num: 3 } })
+        axios.get(api.recentMatch, { params: { num: 3 } })
             .then(res => {
                 this.setState({
                     isLoaded: true,

@@ -9,6 +9,7 @@ import LeagueList from './leagueList'
 import LeagueDetail from './leagueDetail';
 import TeamDetail from './teamDetail';
 import Player from './player';
+import SearchResult from './components/SearchResult';
 
 import { Layout, Menu, Breadcrumb } from 'antd';
 
@@ -35,6 +36,7 @@ class App extends React.Component {
                         <Route path="/league/:id" component={LeagueDetail}></Route>
                         <Route path="/team/:id" component={TeamDetail}></Route>
                         <Route path="/player/:id" component={Player}></Route>
+                        <Route path="/search/:keyword" component={SearchResult}></Route>
                     </Switch>
                 </Content>
             </Layout>

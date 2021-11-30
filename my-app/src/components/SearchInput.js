@@ -24,7 +24,7 @@ class SearchInput extends Component {
                 <div class="modal-dialog" role="document">
                     <div class="input_dec">
                         <input type="text" placeholder="search." value={this.state.value} onChange={this.handleChange} />
-                        <button class="btn_icon" onClick={this.submit.bind(this)}><i class="fa fa-search"></i></button>
+                        <button class="btn_icon" onClick={()=>window.location.href='/search/'+this.state.value}><i class="fa fa-search"></i></button>
                     </div>
                 </div>
             </div>

@@ -36,6 +36,7 @@ public class SearchController {
         Map<String, List<Team>> mp = new HashMap<>();
         mp.put("names", nameKey);
         mp.put("descs", descKey);
+        System.out.println("searchKeyword: "+keyword);
         return mp;
     }
 }

@@ -46,6 +46,7 @@ class TeamDetail extends React.Component {
                     </h6>
                 </div>
                 <div style={{margin: "0 auto", width: "60%"}}>
+                <meta name="referrer" content="no-referrer" />
                     <Table dataSource={this.state.players}>
                         <Column
                             title="Player"
