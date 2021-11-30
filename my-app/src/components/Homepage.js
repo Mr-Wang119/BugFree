@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { Card, Row, Col, Spin } from "antd";
 import 'antd/dist/antd.css';
+import HotLeagues from './HotLeagues';
 
 
 
@@ -73,6 +74,9 @@ class Homepage extends Component {
                                 {matchList}
                             </Row>
                         </div>
+                    </div>
+                    <div className="result_slider" style={{ padding: '30px' }}>
+                    <HotLeagues/>
                     </div>
                 </div>
             );

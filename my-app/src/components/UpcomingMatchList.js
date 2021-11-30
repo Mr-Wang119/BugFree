@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import api from '../utils/api';
 
 
 class UpcomingMatchList extends Component {
@@ -48,7 +49,7 @@ class UpcomingMatchList extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/recentCompetition', { params: { num: 10 } })
+        axios.get(api.recentMatch, { params: { num: 10 } })
             .then(res => {
                 this.setState({
                     matches: res.data,

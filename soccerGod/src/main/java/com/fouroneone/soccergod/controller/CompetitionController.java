@@ -27,6 +27,7 @@ public class CompetitionController {
     @ResponseBody
     public List<CompetitionWithCompete> getRecentCompetition(HttpServletRequest request) {
         int num = Integer.parseInt(request.getParameter("num"));
+        System.out.println("RecentCompetition"+num);
         List<CompetitionWithCompete> competitions = competitionService.findRecentCompetitions(num);
         return competitions;
     }
