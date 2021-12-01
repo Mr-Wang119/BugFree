@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import SearchInput from './components/SearchInput';
 
@@ -11,10 +12,24 @@ class Header extends React.Component {
 
     componentDidMount() {
         if(localStorage.getItem('usernameToken')) {
+            if (!this.isLogin) {
+                this.login();
+            }
             this.setState({isLogin: true})
         } else {
             this.setState({isLogin: false});
         }
+    }
+
+    login() {
+        let datas = new FormData();
+        datas.append('username', localStorage.getItem('usernameToken'));
+        datas.append('password', localStorage.getItem('userPassport'));
+        axios.post('http://localhost:8080/login', datas, {withCredentials: true});
+    }
+
+    logout() {
+        axios.get('http://localhost:8080/logout', {'username': localStorage.getItem('username')}, {withCredentials: true});
     }
 
     render() {
@@ -30,7 +45,9 @@ class Header extends React.Component {
                                         <li><a href={"/user/"+username}>{username}</a></li>
                                         <li><a onClick={()=>{
                                             this.setState({isLogin: false});
+                                            this.logout();
                                             localStorage.removeItem('usernameToken');
+                                            localStorage.removeItem('userPassport');
                                             this.props.history.push('/homepage');
                                         }}>Log out</a></li>
                                     </ul>

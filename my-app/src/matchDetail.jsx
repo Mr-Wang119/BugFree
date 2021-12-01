@@ -23,7 +23,7 @@ class MatchDetail extends React.Component {
 
         let id = this.props.match.params.id;
         let path = "http://localhost:8080/match/"+id;
-        axios.get(path)
+        axios.get(path, {withCredentials: true})
         .then(function(response) {
             let data = response.data;
             if (data.success == true) {

@@ -51,6 +51,7 @@ class Login extends React.Component {
             if (data.success == true) {
                 // token
                 window.localStorage.setItem('usernameToken', data.detail.username);
+                window.localStorage.setItem('userPassport', data.detail.password)
                 // redirect
                 _this.props.history.push('/user/'+data.detail.username);
             } else {
