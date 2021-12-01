@@ -5,7 +5,7 @@ let api = {
     logout: rootUrl+'logout/',
     signup: rootUrl+'signup/',
     user: rootUrl+'user/',
-    edituser: rootUrl+'/edit/',
+    edituser: rootUrl+'edit/',
 
     recentMatch: rootUrl+'recentCompetition/',
     hotLeagues: rootUrl+'favleague/',
