@@ -22,7 +22,7 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
+@CrossOrigin(originPatterns = "*",allowCredentials = "true")
 public class CompetitionController {
     @Autowired
     private CompetitionService competitionService;

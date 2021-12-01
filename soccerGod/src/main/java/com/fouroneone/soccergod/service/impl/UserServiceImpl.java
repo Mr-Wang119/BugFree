@@ -36,7 +36,8 @@ public class UserServiceImpl implements UserService {
             if (user.getUsername()!=null && !user.getUsername().equals(""))
                 existUser = userDao.findByUsername(user.getUsername());
             else
-                existUser = userDao.findByEmail(user.getEmail());
+//                existUser = userDao.findByEmail(user.getEmail());
+                existUser = null;
             if (existUser==null) {
                 result.setMsg("Username or email is wrong.");
             } else if (!user.getPassword().equals(existUser.getPassword())) {

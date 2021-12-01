@@ -18,7 +18,7 @@ class LeagueDetail extends React.Component {
     componentDidMount() {
         const _this = this;
         let lid = this.props.match.params.id;
-        let path = "http://localhost:8080/league/"+lid;
+        let path = "http://34.69.39.159:8080/league/"+lid;
         axios.get(path)
         .then(function(response) {
             let data = response.data;

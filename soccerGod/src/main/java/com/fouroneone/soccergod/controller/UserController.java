@@ -20,25 +20,26 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
+@CrossOrigin(originPatterns = "*",allowCredentials = "true")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
+    @CrossOrigin(originPatterns = "*")
     @ResponseBody
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public Result homepage(HttpServletRequest request) {
        return new Result("homepage", true, null);
     }
 
-
+    @CrossOrigin(originPatterns = "*")
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Result login(HttpServletRequest request) {
         UserInfo user = new UserInfo();
         user.setUsername(request.getParameter("username"));
-        user.setEmail(request.getParameter("email"));
+//        user.setEmail(request.getParameter("email"));
         user.setPassword(request.getParameter("password"));
         Result result = userService.login(user);
         if (result.isSuccess()) {
@@ -48,12 +49,14 @@ public class UserController {
         return result;
     }
 
+    @CrossOrigin(originPatterns = "*")
     @ResponseBody
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public Result signUp(UserInfo user) {
         return userService.register(user);
     }
 
+    @CrossOrigin(originPatterns = "*")
     @ResponseBody
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public Result logout(HttpServletRequest request) {
@@ -77,6 +80,7 @@ public class UserController {
 //        return result;
 //    }
 
+    @CrossOrigin(originPatterns = "*")
     @ResponseBody
     @RequestMapping(value = "/user/{username}", method = RequestMethod.GET)
     public Result getUserInfo(@PathVariable String username) {
@@ -94,6 +98,7 @@ public class UserController {
         return res;
     }
 
+    @CrossOrigin(originPatterns = "*")
     @ResponseBody
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.POST)
     public Result editUser(@PathVariable String username, HttpServletRequest request) {

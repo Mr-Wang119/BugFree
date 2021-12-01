@@ -1,4 +1,4 @@
-let rootUrl = "http://localhost:8080/";
+let rootUrl = "http://34.69.39.159:8080/";
 
 let api = {
     login: rootUrl+'login/',

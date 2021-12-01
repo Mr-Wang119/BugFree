@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(originPatterns = "*")
 public class LeagueController {
     @Autowired
     private LeagueService leagueService;
