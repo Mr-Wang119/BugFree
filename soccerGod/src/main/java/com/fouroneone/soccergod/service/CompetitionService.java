@@ -10,6 +10,8 @@ public interface CompetitionService {
     List<CompetitionWithCompete> findRecentCompetitions(int num);
     int findPondAmountById(int mid);
     int UpdatePondAmount(int mid, int pondAmount);
+    List<CompetitionWithCompete> getMatchPending();
+    List<CompetitionWithCompete> getMatchFinished();
 
 
 //    void insertCompetition(int mid, int hostTeamId, int guestTeamId, int hostScore, int guestScore);

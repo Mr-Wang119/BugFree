@@ -53,13 +53,13 @@ class Login extends React.Component {
                 window.localStorage.setItem('usernameToken', data.detail.username);
                 window.localStorage.setItem('userPassport', data.detail.password)
                 // redirect
-                _this.props.history.push('/user/'+data.detail.username);
+                window.location.href = '/user/'+data.detail.username;
             } else {
                 _this.setState({error: "Wrong username or password, please re-try!"});
             }
         }).catch(function (error) {
             console.log(error);
-            _this.props.history.push('/error');
+            window.location.href = '/error';
         });
     }
 

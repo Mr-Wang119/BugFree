@@ -20,22 +20,22 @@ class User extends React.Component {
         if(localStorage.getItem('usernameToken')) {
             let username = localStorage.getItem('usernameToken')
             let usernameInUrl = _this.props.match.params.username
-            if (username != usernameInUrl) {
-                _this.props.history.push('/error');
+            if (username !== usernameInUrl) {
+                window.location.href = '/error';
             }
             let path = 'http://localhost:8080/user/'+username;
             axios.get(path)
             .then(function (response) {
                 let data = response.data;
-                if (data.success == true) {
+                if (data.success === true) {
                     _this.setState({success: true, info: data.detail});
                 } else {
-                    _this.props.history.push('/error');
+                    window.location.href = '/error';
                 }
             })
             .catch(function (error) {
                 console.log(error);
-                _this.props.history.push('/error');
+                window.location.href = '/error';
             });
         } else {
             this.props.history.go(-1);
@@ -44,13 +44,10 @@ class User extends React.Component {
     
 
     render() {
-        if (!this.state.success) {
-            return (
-                <Spin delay="1000"/>
-            );
-        }
         return (
+            <Spin spinning={!this.state.success} delay={500}>
             <Info info={this.state.info}/>
+            </Spin>
         );
     }
 }

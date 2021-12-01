@@ -23,7 +23,7 @@ class SearchInput extends Component {
             <div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="search">
                 <div class="modal-dialog" role="document">
                     <div class="input_dec">
-                        <input type="text" placeholder="search." value={this.state.value} onChange={this.handleChange} />
+                        <input type="text" placeholder="Input team name, like 'Manchester'" value={this.state.value} onChange={this.handleChange} />
                         <button class="btn_icon" onClick={()=>window.location.href='/search/'+this.state.value}><i class="fa fa-search"></i></button>
                     </div>
                 </div>

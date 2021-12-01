@@ -66,7 +66,6 @@ class Header extends React.Component {
                                     <ul className="nav">
                                         <li><a href="/homepage">home</a></li>
                                         <li><a href="/league">league</a></li>
-                                        <li><a href="/team">team</a></li>
                                         <li><a href="/match">match</a></li>
                                         <li><a href="#links">links</a></li>
                                     </ul>
@@ -75,7 +74,6 @@ class Header extends React.Component {
                                         <ul className="dl-menu">
                                             <li><a href="/homepage">home</a></li>
                                             <li><a href="/league">league</a></li>
-                                            <li><a href="/team">team</a></li>
                                             <li><a href="/match">match</a></li>
                                             <li><a href="#links">links</a></li>
                                         </ul>
@@ -113,7 +111,6 @@ class Header extends React.Component {
                                     <ul className="nav">
                                         <li><a href="/homepage">home</a></li>
                                         <li><a href="/league">league</a></li>
-                                        <li><a href="/team">team</a></li>
                                         <li><a href="/match">match</a></li>
                                         <li><a href="#links">links</a></li>
                                     </ul>
@@ -122,7 +119,6 @@ class Header extends React.Component {
                                         <ul className="dl-menu">
                                             <li><a href="/homepage">home</a></li>
                                             <li><a href="/league">league</a></li>
-                                            <li><a href="/team">team</a></li>
                                             <li><a href="/match">match</a></li>
                                             <li><a href="#links">links</a></li>
                                         </ul>

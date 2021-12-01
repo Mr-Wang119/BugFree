@@ -26,13 +26,6 @@ public class TeamController {
     private TeamDetailService teamDetailService;
 
     @ResponseBody
-    @RequestMapping(value = "/team", method = RequestMethod.GET)
-    public Result listTeam() {
-        Result result = new Result();
-        return result;
-    }
-
-    @ResponseBody
     @RequestMapping(value = "/team/{id}", method = RequestMethod.GET)
     public Result teamDetail(@PathVariable Integer id) {
         Result result = new Result();

@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class BetController {
     @Autowired
     private UserService userService;

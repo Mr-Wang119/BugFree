@@ -28,12 +28,12 @@ class Edit extends React.Component {
     componentWillMount() {
         const _this = this;
         if(!localStorage.getItem('usernameToken')) {
-            this.props.history.push('/error');
+            window.location.href = '/error';
         }
         let username = this.props.match.params.username;
         let usernameStore = localStorage.getItem('usernameToken');
         if (username !== usernameStore) {
-            this.props.history.push('/error');
+            window.location.href = '/error';
         }
         this.setState({username: username});
         axios.get('http://localhost:8080/user/'+username)
@@ -43,7 +43,7 @@ class Edit extends React.Component {
         })
         .catch(err => {
             console.log(err);
-            _this.props.history.push('/error');
+            window.location.href = '/error';
         })
     }
 
@@ -87,13 +87,13 @@ class Edit extends React.Component {
             let data = response.data;
             if (data.success == true) {
                 // redirect
-                _this.props.history.push('/user/'+_this.state.username);
+                window.location.href = '/user/'+_this.state.username;
             } else {
-                _this.props.history.push('/error');
+                window.location.href = '/error';
             }
         }).catch(function (error) {
             console.log(error);
-            _this.props.history.push('/error');
+            window.location.href = '/error';
         });
     }
 

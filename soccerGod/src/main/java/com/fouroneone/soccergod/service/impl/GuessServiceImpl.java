@@ -20,4 +20,9 @@ public class GuessServiceImpl implements GuessService {
     public Integer getHostGuestPond(int mid, int hostwin) {
         return guessDao.getHostGuestPond(mid, hostwin);
     }
+
+    @Override
+    public Integer isGuess(int mid, String username) {
+        return guessDao.isGuess(mid, username);
+    }
 }

@@ -1,14 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import {Spin, Progress, Button, Popover, Input} from 'antd';
+import {Spin, Progress, Button, Popover} from 'antd';
 import './css/matchDetail.css'
+import {Redirect} from 'react-router-dom';
 
 class MatchDetail extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             isReady: false,
-            match: {},
+            compete: {},
             isLogin: false,
             canGuess: true
         }
@@ -27,27 +28,23 @@ class MatchDetail extends React.Component {
         .then(function(response) {
             let data = response.data;
             if (data.success == true) {
-                _this.setState({isReady: true, match: data.detail})
-                if (data.detail.finish === 1) {
+                _this.setState({isReady: true, compete: data.detail})
+                // match has already finished || user has already voted
+                if (data.detail.finish === 1 || data.detail.hostwin !== null) {
                     _this.setState({canGuess: false});
                 }
+                
             } else {
-                _this.props.history.push('/error');
+                window.location.href = '/error';
             }
         })
         .catch(function (error) {
             console.log(error);
-            _this.props.history.push('/error');
+            window.location.href = '/error';
         })
     }
 
     render() {
-        console.log(this.state)
-        if (this.state.isReady == false) {
-            return (
-                <Spin delay="1000"/>
-            );
-        }
         return (
             <div>
                 <div class="innner_banner" style={{ marginBottom: "20px" }}>
@@ -57,6 +54,7 @@ class MatchDetail extends React.Component {
                         </h3>
                     </div>
                 </div>
+                <Spin spinning={!this.state.isReady} delay={500}>
                 <div className="match-detail">
                     <div class="kf_overview kf_current_match_wrap">
                         <h6 class="kf_hd1 margin_0">
@@ -65,17 +63,17 @@ class MatchDetail extends React.Component {
                         
                         <div class="kf_opponents_outerwrap">
                             <h6 class="kf_h4">
-                                <span>{this.state.match.name}</span>
-                                <span style={{color: "#ffbe00"}}>{this.state.match.location!=='nan' ? this.state.match.location: "TBD"}</span>
-                                <em>{this.state.match.time}</em>
+                                <span>{this.state.compete.name}</span>
+                                <span style={{color: "#ffbe00"}}>{this.state.compete.location!=='nan' ? this.state.compete.location: "TBD"}</span>
+                                <em>{this.state.compete.time}</em>
                             </h6>
                             <div class="kf_opponents_wrap">
 
                                 {/* host block */}
                                 <div class="kf_opponents_dec">
-                                    <span><img src={this.state.match.hostUrl} alt=""/></span>
+                                    <span><img src={this.state.compete.hostUrl} alt=""/></span>
                                     <div class="text">
-                                        <h6><a href={'/team/'+this.state.match.hostTeamId}>{this.state.match.hostName}</a></h6>
+                                        <h6><a href={'/team/'+this.state.compete.hostTeamId}>{this.state.compete.hostName}</a></h6>
                                     </div>
                                     <div className="match-progress">
                                     <Progress
@@ -84,30 +82,30 @@ class MatchDetail extends React.Component {
                                             '100%': '#e76f51',
                                         }}
                                         status="normal"
-                                        percent={this.state.match.hostPond === null ? 0: 100*this.state.match.hostPond/this.state.match.pondAmount}
+                                        percent={this.state.compete.hostPond === null ? 0: 100*this.state.compete.hostPond/this.state.compete.pondAmount}
                                     />
                                     </div>
                                     <div>
                                         {this.state.isLogin? <GuessBtn 
-                                            username={localStorage.getItem("usernameToken")} 
                                             canGuess={this.state.canGuess} 
-                                            match={this.state.match}
+                                            compete={this.state.compete}
                                             hostwin={1}
+                                            history={this.props.history}
                                         />: ''}
                                     </div>
                                 </div>
 
 
                                 <div class="kf_opponents_gols">
-                                    <h5><span>{this.state.match.hostScore}</span> : <span>{this.state.match.guestScore}</span></h5>
-                                    <p>{this.state.match.finish === 1 ? "Final Score" : "Pending"}</p>
+                                    <h5><span>{this.state.compete.hostScore}</span> : <span>{this.state.compete.guestScore}</span></h5>
+                                    <p>{this.state.compete.finish === 1 ? "Final Score" : "Pending"}</p>
                                 </div>
 
                                 {/* guest block */}
                                 <div class="kf_opponents_dec span_right">
-                                    <span><img src={this.state.match.guestUrl} alt=""/></span>
+                                    <span><img src={this.state.compete.guestUrl} alt=""/></span>
                                     <div class="text">
-                                        <h6><a href={'/team/'+this.state.match.guestTeamId}>{this.state.match.guestName}</a></h6>
+                                        <h6><a href={'/team/'+this.state.compete.guestTeamId}>{this.state.compete.guestName}</a></h6>
                                     </div>
                                     <div className="match-progress">
                                         <Progress
@@ -116,15 +114,15 @@ class MatchDetail extends React.Component {
                                                 '100%': '#e76f51',
                                             }}
                                             status="normal"
-                                            percent={this.state.match.guestPond === null ? 0: 100*this.state.match.guestPond/this.state.match.pondAmount}
+                                            percent={this.state.compete.guestPond === null ? 0: 100*this.state.compete.guestPond/this.state.compete.pondAmount}
                                         />
                                     </div>
                                     <div>
                                         {this.state.isLogin? <GuessBtn 
-                                            username={localStorage.getItem("usernameToken")} 
                                             canGuess={this.state.canGuess} 
-                                            match={this.state.match}
+                                            compete={this.state.compete}
                                             hostwin={-1}
+                                            history={this.props.history}
                                         />: ''}
                                     </div>
                                 </div>
@@ -134,6 +132,7 @@ class MatchDetail extends React.Component {
                         </div>
                     </div>
                 </div>
+                </Spin>
             </div>
         );
     }
@@ -142,30 +141,69 @@ class MatchDetail extends React.Component {
 class GuessBtn extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            points: '',
+            error: ''
+        }
+    }
+
+    submitForm() {
+        const _this = this;
+        let datas = new FormData();
+
+        datas.append('username', this.props.compete.username);
+        datas.append('points', this.state.points);
+        datas.append('mid', this.props.compete.mid);
+        datas.append('hostWin', this.props.hostwin);      
+
+        axios.post('http://localhost:8080/makebet', datas, {withCredentials: true})
+        .then(response => {
+            let data = response.data;
+            if (data.success == true) {
+                // redirect
+                window.location.reload()
+            } else {
+                _this.setState({error: data.msg});
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            window.location.href = '/error';
+        });
+    }
+
+    setUserInfo(event, key) {
+        let obj = {};
+        obj[key] = event.target.value;
+        this.setState(obj);
     }
 
     render() {
         return (
+        <div>
             <div>
                 {
                 this.props.canGuess? <Popover content={
-                    <form class="row g-3" method="post" action="http://localhost:8080/makebet">
+                    <div>
                         <div class="col-auto">
-                            <label for="point" class="visually-hidden">Point</label>
-                            <input type="number" class="form-control" id="point" name="points"/>
+                            <label for="points" class="visually-hidden">Point</label>
+                            <input type="number" min="1" onInput={(event)=>this.setUserInfo(event, 'points')} class="form-control" id="points"/>
                         </div>
-                        <input name="mid" value={this.props.match.mid} hidden/>
-                        <input name="username" value={this.props.username} hidden/>
-                        <input name="hostWin" value={this.props.hostwin} hidden/>
                         <div class="col-auto">
-                            <button type="submit" class="btn btn-warning mb-3">Confirm</button>
+                            <button onClick={()=>this.submitForm()} class="btn btn-warning mb-3">Confirm</button>
                         </div>
-                    </form>
+                    </div>
                 } title="Enter number to vote!" trigger="click">
                     <Button type="primary">Vote</Button>
-                </Popover> : <Button type="primary" disabled>Vote</Button>}
-                
+                </Popover> 
+                : ( this.props.compete.hostwin !== null ? (this.props.compete.hostwin === this.props.hostwin ? <Button type="primary" disabled style={{color: "#fff", backgroundColor: "#198754"}}>Vote(&#10003;)</Button> : <Button type="primary" disabled>Vote</Button>) 
+                : <Button type="primary" disabled>Vote</Button>
+                )}
             </div>
+            <div className="form-floating mb-3">
+                <p style={{color: "indianred"}}>{this.state.error}</p>
+            </div>
+        </div>
         );
     }
 }

@@ -24,21 +24,16 @@ class Player extends React.Component {
             if (data.success == true) {
                 _this.setState({isReady: true, player: data.detail.player, team: data.detail.team})
             } else {
-                _this.props.history.push('/error');
+                window.location.href = '/error';
             }
         })
         .catch(function (error) {
             console.log(error);
-            _this.props.history.push('/error');
+            window.location.href = '/error';
         })
     }
 
     render() {
-        if (this.state.isReady == false) {
-            return (
-                <Spin delay="1000"/>
-            );
-        }
         return (
             <div>
                 <div class="innner_banner" style={{ marginBottom: "20px" }}>
@@ -48,6 +43,7 @@ class Player extends React.Component {
                         </h3>
                     </div>
                 </div>
+                <Spin spinning={!this.state.isReady} delay={500}>
                 <div className="player-container">
                     <h6 className="kf_hd1 margin_0">
                         <span>Player Information</span>
@@ -85,6 +81,7 @@ class Player extends React.Component {
                     </div>
                 </div>
                 <AbilityTable player={this.state.player}/>
+                </Spin>
             </div>
         );
     }

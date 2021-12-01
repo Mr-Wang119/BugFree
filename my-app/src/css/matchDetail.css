@@ -10,3 +10,12 @@
 .ant-progress-text {
     display: contents;
 }
+
+.vote-form {
+    width: 80%;
+    margin: 5px auto;
+}
+
+.vote-form button {
+    margin: 5px auto;
+}

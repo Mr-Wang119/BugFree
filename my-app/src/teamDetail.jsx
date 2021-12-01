@@ -23,21 +23,16 @@ class TeamDetail extends React.Component {
             if (data.success == true) {
                 _this.setState({isReady: true, players: data.detail.players, team: data.detail.team})
             } else {
-                _this.props.history.push('/error');
+                window.location.href = '/error';
             }
         })
         .catch(function (error) {
             console.log(error);
-            _this.props.history.push('/error');
+            window.location.href = '/error';
         })
     }
 
     render() {
-        if (this.state.isReady == false) {
-            return (
-                <Spin delay="1000"/>
-            );
-        }
         return (
             <div>
                     <div class="innner_banner" style={{ marginBottom: "20px" }}>
@@ -47,6 +42,7 @@ class TeamDetail extends React.Component {
                             </h3>
                         </div>
                     </div>
+                <Spin spinning={!this.state.isReady} delay={500}>
                 <div style={{margin: "0 auto", width: "60%"}}>
                 <meta name="referrer" content="no-referrer" />
                     <Table dataSource={this.state.players}>
@@ -75,6 +71,7 @@ class TeamDetail extends React.Component {
                         />
                     </Table>
                 </div>
+                </Spin>
             </div>
         );
     }

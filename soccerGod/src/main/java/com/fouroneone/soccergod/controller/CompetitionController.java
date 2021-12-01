@@ -32,9 +32,7 @@ public class CompetitionController {
     @RequestMapping(method = RequestMethod.GET, value = "/recentCompetition")
     @ResponseBody
     public List<CompetitionWithCompete> getRecentCompetition(HttpServletRequest request) {
-        System.out.println((String)request.getSession().getAttribute("username"));
         int num = Integer.parseInt(request.getParameter("num"));
-        System.out.println("RecentCompetition"+num);
         List<CompetitionWithCompete> competitions = competitionService.findRecentCompetitions(num);
         return competitions;
     }
@@ -43,6 +41,8 @@ public class CompetitionController {
     @ResponseBody
     public Result competitionDetailInfoById(@PathVariable Integer id, HttpServletRequest request) {
         CompetitionWithCompete competition = competitionService.findById(id);
+        String username = (String) request.getSession().getAttribute("username");
+        Integer hostwin = guessService.isGuess(id, username);
         Result result = new Result();
         if (competition == null) {
             result.setDetail(null);
@@ -54,6 +54,7 @@ public class CompetitionController {
         Integer hostPond = guessService.getHostGuestPond(id, 1);
         Integer guestPond = guessService.getHostGuestPond(id, -1);
         JSONObject jsonObject=new JSONObject();
+        jsonObject.put("hostwin", hostwin);
         jsonObject.put("mid",competition.getMid());
         jsonObject.put("hostScore",competition.getHostScore());
         jsonObject.put("hostName",competition.getHostName());
@@ -74,7 +75,20 @@ public class CompetitionController {
         result.setDetail(jsonObject);
         result.setMsg("");
         return result;
-
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/match")
+    @ResponseBody
+    public Result getMatch() {
+        Result result = new Result();
+        List<CompetitionWithCompete> pending = competitionService.getMatchPending();
+        List<CompetitionWithCompete> finished = competitionService.getMatchFinished();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("pending", pending);
+        jsonObject.put("finished", finished);
+        result.setSuccess(true);
+        result.setMsg("");
+        result.setDetail(jsonObject);
+        return result;
+    }
 }

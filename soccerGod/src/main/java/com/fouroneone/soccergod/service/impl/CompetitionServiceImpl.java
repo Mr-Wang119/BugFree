@@ -47,4 +47,14 @@ public class CompetitionServiceImpl implements CompetitionService {
     public int UpdatePondAmount(int mid, int pondAmount){
         return competitionDao.UpdatePondAmount(mid,pondAmount);
     }
+
+    @Override
+    public List<CompetitionWithCompete> getMatchPending() {
+        return competitionDao.getMatchPending();
+    }
+
+    @Override
+    public List<CompetitionWithCompete> getMatchFinished() {
+        return competitionDao.getMatchFinished();
+    }
 }

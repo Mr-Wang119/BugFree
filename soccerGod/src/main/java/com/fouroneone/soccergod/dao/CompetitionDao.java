@@ -32,4 +32,16 @@ public interface CompetitionDao {
 
     @Update("UPDATE Compete SET mid = #{mid}, hostTeamId = #{hostTeamId}, guestTeamId = #{guestTeamId}, hostScore = #{hostScore}, guestScore = #{guestScore} WHERE mid = #{mid}")
     void updateCompetition(@Param("mid") int mid, @Param("hostTeamId") int hostTeamId, @Param("guestTeamId") int guestTeamId, @Param("hostScore") int hostScore, @Param("guestScore") int guestScore);
+
+    @Select("SELECT hostTeam.image as hostUrl, guestTeam.image as guestUrl, hostTeam.name AS hostName, hostScore, guestTeam.name AS guestName, mid, guestScore, location, time, Competition.name as `name`, hostTeamId, guestTeamId\n" +
+            "FROM Compete NATURAL JOIN Competition JOIN Team AS hostTeam ON hostTeam.tid=Compete.hostTeamId JOIN Team AS guestTeam ON Compete.guestTeamId=guestTeam.tid \n" +
+            "WHERE finish=0\n" +
+            "ORDER BY time")
+    List<CompetitionWithCompete> getMatchPending();
+
+    @Select("SELECT hostTeam.image as hostUrl, guestTeam.image as guestUrl, hostTeam.name AS hostName, hostScore, guestTeam.name AS guestName, mid, guestScore, location, time, Competition.name as `name`, hostTeamId, guestTeamId\n" +
+            "FROM Compete NATURAL JOIN Competition JOIN Team AS hostTeam ON hostTeam.tid=Compete.hostTeamId JOIN Team AS guestTeam ON Compete.guestTeamId=guestTeam.tid \n" +
+            "WHERE finish=1\n" +
+            "ORDER BY time DESC")
+    List<CompetitionWithCompete> getMatchFinished();
 }

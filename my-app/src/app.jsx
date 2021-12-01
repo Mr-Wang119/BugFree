@@ -12,6 +12,7 @@ import Player from './player';
 import SearchResult from './components/SearchResult';
 import MatchDetail from './matchDetail';
 import Edit from './edit';
+import Match from './matchList';
 
 import { Layout, Menu, Breadcrumb } from 'antd';
 
@@ -41,6 +42,7 @@ class App extends React.Component {
                         <Route path="/search/:keyword" component={SearchResult}></Route>
                         <Route path="/match/:id" component={MatchDetail}></Route>
                         <Route path="/edit/:username" component={Edit}></Route>
+                        <Route exact path="/match" component={Match}></Route>
                     </Switch>
                 </Content>
             </Layout>

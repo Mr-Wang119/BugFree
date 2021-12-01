@@ -25,66 +25,65 @@ class Signup extends React.Component {
 
     componentWillMount() {
         if(localStorage.getItem('usernameToken')) {
-            this.props.history.push('/homepage');
+            window.location.href = '/homepage';
         }
     }
 
     submitForm() {
         const _this = this;
         let datas = new FormData();
-        if (this.state.username == '') {
+        if (this.state.username === '') {
             this.setState({error: "Please fill all blanks!"});
             return;
         } else {
             datas.append('username', this.state.username);
         }
         
-        if (this.state.password == '') {
+        if (this.state.password === '') {
             this.setState({error: "Please fill all blanks!"});
             return;
         } else {
             datas.append('password', this.state.password);
         }
         
-        if (this.state.passwordConfirm == '') {
+        if (this.state.passwordConfirm === '') {
             this.setState({error: "Please fill all blanks!"});
             return;
         }
 
-        if (this.state.email == '') {
+        if (this.state.email === '') {
             this.setState({error: "Please fill all blanks!"});
             return;
         } else {
             datas.append('email', this.state.email);
         }
 
-        if (this.state.name == '') {
+        if (this.state.name === '') {
             this.setState({error: "Please fill all blanks!"});
             return;
         } else {
             datas.append('name', this.state.name);
         }
 
-        if (this.state.birthday == '') {
+        if (this.state.birthday === '') {
             this.setState({error: "Please fill all blanks!"});
             return;
         } else {
             datas.append('birthday', this.state.birthday);
         }
 
-        if (this.state.password != this.state.passwordConfirm) {
+        if (this.state.password !== this.state.passwordConfirm) {
             this.setState({error: "Different passwords!"});
             return;
         }
 
         axios.post('http://localhost:8080/signup', datas)
         .then(function (response) {
-            console.log(response.data);
             // session
-            _this.props.history.push('/user/'+_this.state.username);
+            window.location.href = '/user/'+_this.state.username;
         }).catch(function (error) {
             console.log(error);
-            _this.props.history.push('/error');
+            window.location.href = '/error';
         });
     }
 

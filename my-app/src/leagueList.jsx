@@ -20,21 +20,16 @@ class LeagueList extends React.Component {
             if (data.success == true) {
                 _this.setState({isReady: true, leagues: data.detail})
             } else {
-                _this.props.history.push('/error');
+                window.location.href = '/error';
             }
         })
         .catch(function (error) {
             console.log(error);
-            _this.props.history.push('/error');
+            window.location.href = '/error';
         })
     }
 
     render() {
-        if (this.isReady == false) {
-            return (
-                <Spin delay="1000"/>
-            );
-        }
         return (
             <div style={{display: "flex", flexDirection: "column"}}>
                 <div class="innner_banner" style={{marginBottom: "20px"}}>
@@ -42,9 +37,11 @@ class LeagueList extends React.Component {
                         <h3>League</h3>
                     </div>
                 </div>
+                <Spin spinning={!this.state.isReady} delay={500}>
                 <div>
                     <LeagueListData leagues={this.state.leagues}/>
                 </div>
+                </Spin>
             </div>
         );
     }

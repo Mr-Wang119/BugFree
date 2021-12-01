@@ -25,12 +25,12 @@ class LeagueDetail extends React.Component {
             if (data.success == true) {
                 _this.setState({isReady: true, teams: data.detail.teams, league: data.detail.league})
             } else {
-                _this.props.history.push('/error');
+                window.location.href = '/error';
             }
         })
         .catch(function (error) {
             console.log(error);
-            _this.props.history.push('/error');
+            window.location.href = '/error';
         })
     }
     
@@ -41,7 +41,12 @@ class LeagueDetail extends React.Component {
             );
         }
         return (
-            <div>
+            <div style={{display: "flex", flexDirection: "column"}}>
+                <div class="innner_banner" style={{marginBottom: "20px"}}>
+                    <div class="container">
+                        <h3>League Teams</h3>
+                    </div>
+                </div>
                 <div id="leagueText">
                     <div id="leagueText-title">
                         <span>
@@ -65,6 +70,7 @@ class LeagueDetail extends React.Component {
                         render={(text, record) => (
                             <a href={"/team/"+record.tid}>{text}</a>
                         )}
+                        sorter={(a, b) => a.teamName.localeCompare(b.teamName)}
                         />
                     </Table>
                 </div>
