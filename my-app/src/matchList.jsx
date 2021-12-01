@@ -2,7 +2,6 @@ import axios from 'axios';
 import React from 'react';
 import { Tabs, Spin } from 'antd';
 import { Table, Avatar } from 'antd';
-import reqwest from 'reqwest';
 
 
 const { TabPane } = Tabs;
