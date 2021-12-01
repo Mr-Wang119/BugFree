@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import SearchInput from './components/SearchInput';
+import api from './utils/api';
 
 class Header extends React.Component {
     constructor(props) {
@@ -25,11 +26,11 @@ class Header extends React.Component {
         let datas = new FormData();
         datas.append('username', localStorage.getItem('usernameToken'));
         datas.append('password', localStorage.getItem('userPassport'));
-        axios.post('http://localhost:8080/login', datas, {withCredentials: true});
+        axios.post(api.login, datas, {withCredentials: true});
     }
 
     logout() {
-        axios.get('http://localhost:8080/logout', {'username': localStorage.getItem('username')}, {withCredentials: true});
+        axios.get(api.logout, {'username': localStorage.getItem('username')}, {withCredentials: true});
     }
 
     render() {

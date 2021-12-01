@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {Spin, List} from 'antd';
 import './css/leagueList.css'
+import api from './utils/api';
 
 class LeagueList extends React.Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class LeagueList extends React.Component {
 
     componentDidMount() {
         const _this = this;
-        axios.get("http://localhost:8080/league")
+        axios.get(api.league)
         .then(function (response){
             let data = response.data;
             if (data.success == true) {

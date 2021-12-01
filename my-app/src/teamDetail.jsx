@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Table, Spin} from 'antd';
+import api from './utils/api';
 const { Column } = Table;
 
 class TeamDetail extends React.Component {
@@ -16,7 +17,7 @@ class TeamDetail extends React.Component {
     componentDidMount() {
         const _this = this;
         let lid = this.props.match.params.id;
-        let path = "http://localhost:8080/team/"+lid;
+        let path = api.team+lid;
         axios.get(path)
         .then(function(response) {
             let data = response.data;

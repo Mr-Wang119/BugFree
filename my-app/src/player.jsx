@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Spin, Progress } from 'antd';
 import './css/player.css'
+import api from './utils/api';
 
 class Player extends React.Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Player extends React.Component {
     componentDidMount() {
         let pid = this.props.match.params.id;
         const _this = this;
-        let path = "http://localhost:8080/player/"+pid;
+        let path = api.player+pid;
         axios.get(path)
         .then(function(response) {
             let data = response.data;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import { Spin, List } from 'antd';
 import '../css/leagueList.css'
+import api from '../utils/api';
 
 //List.js
 class SearchResult extends Component {
@@ -76,7 +77,7 @@ class SearchResult extends Component {
     componentDidMount() {
         const _this = this;
         this.state.keyword = this.props.match.params.keyword;
-        axios.post('http://localhost:8080/search/keyword', {
+        axios.post(api.teamSearch, {
             "keyword": this.state.keyword
         })
             .then(function (response) {

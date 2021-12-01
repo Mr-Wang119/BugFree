@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import './css/edit.css';
+import api from './utils/api';
 
 class Edit extends React.Component {
     constructor(props){
@@ -36,7 +37,7 @@ class Edit extends React.Component {
             window.location.href = '/error';
         }
         this.setState({username: username});
-        axios.get('http://localhost:8080/user/'+username)
+        axios.get(api.user+username)
         .then(res => {
             let detail = res.data.detail;
             _this.setState({name: detail.name, birthday: detail.birthday, email: detail.email})
@@ -82,7 +83,7 @@ class Edit extends React.Component {
             return;
         }
 
-        axios.post('http://localhost:8080/edit/'+_this.state.username, datas)
+        axios.post(api.edituser+_this.state.username, datas)
         .then(function (response) {
             let data = response.data;
             if (data.success == true) {

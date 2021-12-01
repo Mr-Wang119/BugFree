@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import TeamData from './TeamData';
+import api from '../utils/api';
 
 //List.js
 class UserList extends Component {
@@ -52,7 +53,7 @@ class UserList extends Component {
 
   componentDidMount() {
       const _this = this;
-      axios.post('http://localhost:8080/search/teamkeyword', {
+      axios.post(api.teamSearch, {
           "keyword": this.props.keyword})
         .then(function (response) {
             _this.setState({

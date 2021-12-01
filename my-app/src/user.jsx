@@ -3,6 +3,7 @@ import axios from "axios";
 import { Spin } from 'antd';
 import { Descriptions} from 'antd';
 import './css/user.css'
+import api from './utils/api';
 
 class User extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class User extends React.Component {
             if (username !== usernameInUrl) {
                 window.location.href = '/error';
             }
-            let path = 'http://localhost:8080/user/'+username;
+            let path = api.user+username;
             axios.get(path)
             .then(function (response) {
                 let data = response.data;

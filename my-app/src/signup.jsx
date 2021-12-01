@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from "axios";
+import api from './utils/api';
 
 class Signup extends React.Component {
     constructor(props) {
@@ -77,7 +78,7 @@ class Signup extends React.Component {
             return;
         }
 
-        axios.post('http://localhost:8080/signup', datas)
+        axios.post(api.signup, datas)
         .then(function (response) {
             // session
             window.location.href = '/user/'+_this.state.username;

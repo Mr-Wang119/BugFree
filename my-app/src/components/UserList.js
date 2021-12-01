@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import UserData from './UserData';
+import api from '../utils/api';
 
 //List.js
 class UserList extends Component {
@@ -36,7 +37,7 @@ class UserList extends Component {
 
   componentDidMount() {
       const _this = this;
-      axios.get('http://localhost:8080/test')
+      axios.get(api.test)
         .then(function (response) {
             _this.setState({
                 users: response.data,

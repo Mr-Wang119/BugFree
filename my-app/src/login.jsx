@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from "axios";
+import api from './utils/api';
 
 
 class Login extends React.Component {
@@ -45,7 +46,7 @@ class Login extends React.Component {
             datas.append('password', this.state.password)
         }
 
-        axios.post('http://localhost:8080/login', datas, {withCredentials: true})
+        axios.post(api.login, datas, {withCredentials: true})
         .then(function (response) {
             let data = response.data;
             if (data.success == true) {

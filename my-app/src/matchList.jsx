@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 import { Tabs, Spin } from 'antd';
 import { Table, Avatar } from 'antd';
+import api from './utils/api';
 
 
 const { TabPane } = Tabs;
@@ -49,7 +50,7 @@ class MatchTablePending extends React.Component {
 
     componentDidMount() {
         const _this = this;
-        axios.get('http://localhost:8080/match')
+        axios.get(api.match)
         .then(response => {
             _this.setState({
                 isReady: true,
@@ -113,7 +114,7 @@ class MatchTableFinish extends React.Component {
 
     componentDidMount() {
         const _this = this;
-        axios.get('http://localhost:8080/match')
+        axios.get(api.match)
         .then(response => {
             _this.setState({
                 isReady: true,

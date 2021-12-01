@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Spin, Progress, Button, Popover} from 'antd';
 import './css/matchDetail.css'
 import {Redirect} from 'react-router-dom';
+import api from './utils/api';
 
 class MatchDetail extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class MatchDetail extends React.Component {
         }
 
         let id = this.props.match.params.id;
-        let path = "http://localhost:8080/match/"+id;
+        let path = api.match+id;
         axios.get(path, {withCredentials: true})
         .then(function(response) {
             let data = response.data;
@@ -156,7 +157,7 @@ class GuessBtn extends React.Component {
         datas.append('mid', this.props.compete.mid);
         datas.append('hostWin', this.props.hostwin);      
 
-        axios.post('http://localhost:8080/makebet', datas, {withCredentials: true})
+        axios.post(api.makeBet, datas, {withCredentials: true})
         .then(response => {
             let data = response.data;
             if (data.success == true) {
