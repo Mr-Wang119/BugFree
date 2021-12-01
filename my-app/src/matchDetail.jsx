@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {Spin, Progress, Button, Popover} from 'antd';
+import {Spin, Progress, Button, Popover, message} from 'antd';
 import './css/matchDetail.css'
 import {Redirect} from 'react-router-dom';
 import api from './utils/api';
@@ -41,7 +41,7 @@ class MatchDetail extends React.Component {
         })
         .catch(function (error) {
             console.log(error);
-            window.location.href = '/error';
+            message.error('Network Error');
         })
     }
 
@@ -152,12 +152,12 @@ class GuessBtn extends React.Component {
         const _this = this;
         let datas = new FormData();
 
-        datas.append('username', this.props.compete.username);
         datas.append('points', this.state.points);
         datas.append('mid', this.props.compete.mid);
-        datas.append('hostWin', this.props.hostwin);      
+        datas.append('hostWin', this.props.hostwin);   
+        datas.append('username', localStorage.getItem('usernameToken'));   
 
-        axios.post(api.makeBet, datas, {withCredentials: true})
+        axios.post(api.makeBet, datas)
         .then(response => {
             let data = response.data;
             if (data.success == true) {
@@ -169,7 +169,7 @@ class GuessBtn extends React.Component {
         })
         .catch(error => {
             console.log(error);
-            window.location.href = '/error';
+            message.error('Network Error');
         });
     }
 
