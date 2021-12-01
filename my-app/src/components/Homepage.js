@@ -88,7 +88,7 @@ class Homepage extends Component {
     }
 
     componentDidMount() {
-        axios.get(api.recentMatch, { params: { num: 3 } })
+        axios.get(api.recentMatch, { withCredentials: true,params: { num: 3 } })
             .then(res => {
                 this.setState({
                     isLoaded: true,

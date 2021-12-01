@@ -22,7 +22,7 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class CompetitionController {
     @Autowired
     private CompetitionService competitionService;
@@ -32,6 +32,7 @@ public class CompetitionController {
     @RequestMapping(method = RequestMethod.GET, value = "/recentCompetition")
     @ResponseBody
     public List<CompetitionWithCompete> getRecentCompetition(HttpServletRequest request) {
+        System.out.println((String)request.getSession().getAttribute("username"));
         int num = Integer.parseInt(request.getParameter("num"));
         System.out.println("RecentCompetition"+num);
         List<CompetitionWithCompete> competitions = competitionService.findRecentCompetitions(num);
