@@ -43,7 +43,6 @@ public class CompetitionController {
     @ResponseBody
     public Result competitionDetailInfoById(@PathVariable Integer id, HttpServletRequest request) {
         CompetitionWithCompete competition = competitionService.findById(id);
-        System.out.println(request.getSession().getAttribute("JSESSIONID"));
         Result result = new Result();
         if (competition == null) {
             result.setDetail(null);

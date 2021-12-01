@@ -36,6 +36,7 @@ public class BetController {
         if (!userService.isSignin(request.getSession())) {
             result = new Result("Could not finish bet as user not login", false, null);
         } else {
+            System.out.println(request.getParameter("points"));
             int betPoints = Integer.parseInt(request.getParameter("points"));
             int mid = Integer.parseInt(request.getParameter("mid"));
             String username = (String)request.getSession().getAttribute("username");

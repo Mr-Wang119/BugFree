@@ -88,7 +88,12 @@ class MatchDetail extends React.Component {
                                     />
                                     </div>
                                     <div>
-                                        {this.state.isLogin? <GuessBtn canGuess={this.state.canGuess}/>: ''}
+                                        {this.state.isLogin? <GuessBtn 
+                                            username={localStorage.getItem("usernameToken")} 
+                                            canGuess={this.state.canGuess} 
+                                            match={this.state.match}
+                                            hostwin={1}
+                                        />: ''}
                                     </div>
                                 </div>
 
@@ -115,7 +120,12 @@ class MatchDetail extends React.Component {
                                         />
                                     </div>
                                     <div>
-                                        {this.state.isLogin? <GuessBtn canGuess={this.state.canGuess}/>: ''}
+                                        {this.state.isLogin? <GuessBtn 
+                                            username={localStorage.getItem("usernameToken")} 
+                                            canGuess={this.state.canGuess} 
+                                            match={this.state.match}
+                                            hostwin={-1}
+                                        />: ''}
                                     </div>
                                 </div>
 
@@ -142,8 +152,11 @@ class GuessBtn extends React.Component {
                     <form class="row g-3" method="post" action="http://localhost:8080/makebet">
                         <div class="col-auto">
                             <label for="point" class="visually-hidden">Point</label>
-                            <input type="number" class="form-control" id="point"/>
+                            <input type="number" class="form-control" id="point" name="points"/>
                         </div>
+                        <input name="mid" value={this.props.match.mid} hidden/>
+                        <input name="username" value={this.props.username} hidden/>
+                        <input name="hostWin" value={this.props.hostwin} hidden/>
                         <div class="col-auto">
                             <button type="submit" class="btn btn-warning mb-3">Confirm</button>
                         </div>
