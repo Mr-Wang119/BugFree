@@ -34,7 +34,6 @@ class Player extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         if (this.state.isReady == false) {
             return (
                 <Spin delay="1000"/>
@@ -43,12 +42,12 @@ class Player extends React.Component {
         return (
             <div>
                 <div class="innner_banner" style={{ marginBottom: "20px" }}>
-                        <div class="container">
-                            <h3>
-                                Player
-                            </h3>
-                        </div>
+                    <div class="container">
+                        <h3>
+                            Player
+                        </h3>
                     </div>
+                </div>
                 <div className="player-container">
                     <h6 className="kf_hd1 margin_0">
                         <span>Player Information</span>
@@ -179,6 +178,17 @@ class AbilityTable extends React.Component {
                                 '100%': '#e76f51',
                             }}
                             percent={this.props.player.gkSpeed}
+                            />
+                    </div>
+
+                    <div>
+                        <span>Position</span>
+                        <Progress
+                            strokeColor={{
+                                '0%': '#e9c46a',
+                                '100%': '#e76f51',
+                            }}
+                            percent={this.props.player.gkPosition}
                             />
                     </div>
                     

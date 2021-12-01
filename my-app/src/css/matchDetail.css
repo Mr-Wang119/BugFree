@@ -1,0 +1,12 @@
+.match-detail {
+    width: 60%;
+    margin: 20px auto;
+}
+
+.match-progress {
+    width: 80%;
+}
+
+.ant-progress-text {
+    display: contents;
+}
